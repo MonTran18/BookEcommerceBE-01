@@ -8,25 +8,25 @@ using ClassLibrary_RepositoryDLL.Repository.Interface;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
-    public class PublisherRepository: IPublisherRepository
+    public class PublisherRepository : IPublisherRepository
     {
         private readonly BookEcommerceContext _context;
         public PublisherRepository(BookEcommerceContext context) => _context = context;
 
-        public void AddPublisher(Publisher newpub)
+        public void addPublisher(Publisher newpub)
         {
             try
             {
                 _context.Publishers.Add(newpub);
                 _context.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
-        public bool DeletePublisher(int pubId)
+        public bool deletePublisher(int pubId)
         {
             Publisher publisher = _context.Publishers.Find(pubId);
             if (publisher != null)
@@ -55,7 +55,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return publisher;
         }
 
-        public bool UpdatePublisher(Publisher newpub)
+        public bool searchPub(Publisher keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updatePublisher(Publisher newpub)
         {
             Publisher publisher = _context.Publishers.SingleOrDefault(publisher => publisher.Id.Equals(newpub.Id));
             if (publisher != null)

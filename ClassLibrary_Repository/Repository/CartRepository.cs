@@ -13,28 +13,28 @@ namespace ClassLibrary_RepositoryDLL.Repository
     {
         private readonly BookEcommerceContext _context;
         public CartRepository(BookEcommerceContext context) => _context = context;
-        public void AddCart(Cart newcart)
+        public void addCart(Cart newcart)
         {
             try
             {
                 _context.Carts.Add(newcart);
                 _context.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
-        public bool DeleteCart(int cartId)
+        public bool deleteCart(int cartId)
         {
             Cart cart = _context.Carts.Find(cartId);
             if (cart != null)
             {
-                try 
-                { 
+                try
+                {
                     _context.Carts.Remove(cart);
-                    _context.SaveChanges(); 
+                    _context.SaveChanges();
                 }
                 catch (Exception ex)
                 {
@@ -43,16 +43,14 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
             return false;
         }
-        public bool UpdateCart(Cart newcart)
+        public bool updateCart(Cart newcart)
         {
             Cart cart = _context.Carts.SingleOrDefault(cart => cart.Id.Equals(newcart.Id));
-            if(cart != null)
+            if (cart != null)
             {
                 try
                 {
                     cart.AccountId = newcart.AccountId;
-                    cart.BookId = newcart.BookId;
-                    cart.Quantity = newcart.Quantity;
                     _context.Carts.Update(newcart);
                     _context.SaveChanges();
                     return true;
@@ -73,6 +71,11 @@ namespace ClassLibrary_RepositoryDLL.Repository
         {
             Cart cart = _context.Carts.Find(cartId);
             return cart;
+        }
+
+        public bool searchCart(Cart keyword)
+        {
+            throw new NotImplementedException();
         }
     }
 }

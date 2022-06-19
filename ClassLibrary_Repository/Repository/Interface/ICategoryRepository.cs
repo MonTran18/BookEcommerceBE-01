@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface ICategoryRepository
     {
+        bool searchCate(Category keyword);
         List<Category> getAllCategory();
-        void AddCategory(Category category);
-        bool UpdateCategory(Category category);
-        bool DeleteCategory(int categoryId);
+        void addCategory(Category category);
+        bool updateCategory(Category category);
+        bool deleteCategory(int categoryId);
         Category getCategory(int categoryId);
 
         //Create Search by Name follow the name in the website

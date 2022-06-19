@@ -41,11 +41,13 @@ namespace BookEcommerce_ASP.NETCore_MVC
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
+            
             //declare for Services
             services.AddMvc();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IBookBannerService, BookBannerService>();
+            services.AddTransient<ICartItemService, CartItemService>();
 
 
             services.AddSession(options =>

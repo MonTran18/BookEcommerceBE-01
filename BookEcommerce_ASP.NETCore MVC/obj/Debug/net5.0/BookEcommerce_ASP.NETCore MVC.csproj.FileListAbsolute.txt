@@ -599,7 +599,6 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.TagHelpers.input.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.TagHelpers.output.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.RazorCoreGenerate.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Cart.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Checkout.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
@@ -609,6 +608,7 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\ProductDetail.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Register.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\Wishlist.cshtml.g.cs
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\Cart.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

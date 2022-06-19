@@ -16,7 +16,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             _context = context;
         }
 
-        public void AddCheckout(Checkout newcheckout)
+        public void addCheckout(Checkout newcheckout)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteCheckout(int checkoutId)
+        public bool deleteCheckout(int checkoutId)
         {
             Checkout checkout = _context.Checkouts.Find(checkoutId);
             if (checkout != null)
@@ -60,7 +60,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return checkout;
         }
 
-        public bool UpdateCheckout(Checkout newcheckout)
+        public bool searchCheckout(Checkout keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateCheckout(Checkout newcheckout)
         {
             Checkout checkout = _context.Checkouts.SingleOrDefault(checkout => checkout.Id == newcheckout.Id);
             if (checkout != null)
@@ -80,7 +85,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
                     _context.SaveChanges();
                     return true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }

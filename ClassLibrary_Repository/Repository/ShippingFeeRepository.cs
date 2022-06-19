@@ -8,12 +8,12 @@ using ClassLibrary_RepositoryDLL.Repository.Interface;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
-    public class ShippingFeeRepository: IShippingFeeRepository
+    public class ShippingFeeRepository : IShippingFeeRepository
     {
         private readonly BookEcommerceContext _context;
-        public ShippingFeeRepository(BookEcommerceContext context) =>  _context = context;
+        public ShippingFeeRepository(BookEcommerceContext context) => _context = context;
 
-        public void AddShippingFee(ShippingFee newshippingfee)
+        public void addShippingFee(ShippingFee newshippingfee)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteShippingFee(int shippingfeeId)
+        public bool deleteShippingFee(int shippingfeeId)
         {
             ShippingFee shippingfee = _context.ShippingFees.Find(shippingfeeId);
             if (shippingfee != null)
@@ -55,7 +55,26 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return shippingfee;
         }
 
-        public bool UpdateShippingFee(ShippingFee newshippingfee)
+        //Search by Shipping Fee
+        public bool searchShip(ShippingFee keyword)
+        {
+            ShippingFee shippingfee = _context.ShippingFees.SingleOrDefault(shippingfee => shippingfee.Fee.Equals(keyword));
+            if (shippingfee != null)
+            {
+                try
+                {
+                    _context.ShippingFees.Find(keyword);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+            return false;
+        }
+
+        public bool updateShippingFee(ShippingFee newshippingfee)
         {
             ShippingFee shippingfee = _context.ShippingFees.SingleOrDefault(shippingfee => shippingfee.Id.Equals(newshippingfee.Id));
             if (shippingfee != null)

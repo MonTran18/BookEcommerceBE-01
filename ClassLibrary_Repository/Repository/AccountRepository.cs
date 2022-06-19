@@ -15,7 +15,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
         {
             _context = context;
         }
-        public void AddAccount(Account newaccount)
+        public void addAccount(Account newaccount)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteAccount(int accountId)
+        public bool deleteAccount(int accountId)
         {
             Account account = _context.Accounts.Find(accountId);
             if (account != null)
@@ -59,7 +59,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return accounts;
         }
 
-        public bool UpdateAccount(Account newaccount)
+        public bool searchAccount(Account keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateAccount(Account newaccount)
         {
             Account account = _context.Accounts.SingleOrDefault(account => account.Id.Equals(newaccount.Id));
             if (account != null)

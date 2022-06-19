@@ -12,7 +12,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
     {
         private readonly BookEcommerceContext _context;
         public PaymentMethodRepository(BookEcommerceContext context) => _context = context;
-        public void AddPaymentMethod(PaymentMethod newpaymethod)
+        public void addPaymentMethod(PaymentMethod newpaymethod)
         {
             try
             {
@@ -25,17 +25,17 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeletePaymentMethod(int paymethodId)
+        public bool deletePaymentMethod(int paymethodId)
         {
             PaymentMethod payment = _context.PaymentMethods.Find(paymethodId);
-            if(payment != null)
+            if (payment != null)
             {
                 try
                 {
                     _context.PaymentMethods.Remove(payment);
                     _context.SaveChanges();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }
@@ -55,7 +55,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return payment;
         }
 
-        public bool UpdatePaymentMethod(PaymentMethod newpaymethod)
+        public bool searchPayment(PaymentMethod keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updatePaymentMethod(PaymentMethod newpaymethod)
         {
             PaymentMethod payment = _context.PaymentMethods.SingleOrDefault(payment => payment.Id.Equals(newpaymethod.Id));
             if (payment != null)
@@ -67,7 +72,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
                     _context.SaveChanges();
                     return true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }

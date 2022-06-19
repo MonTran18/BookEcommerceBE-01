@@ -33,7 +33,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPost]
         public ActionResult AddCategory([FromBody] Category newcategory)
         {
-            _repository.AddCategory(newcategory);
+            _repository.addCategory(newcategory);
             List<Category> authors = _repository.getAllCategory();
             return Ok(authors);
         }
@@ -41,14 +41,14 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPut]
         public ActionResult UpdateCategory([FromBody] Category newcategory)
         {
-            _repository.UpdateCategory(newcategory);
+            _repository.updateCategory(newcategory);
             return Ok(newcategory);
         }
 
         [HttpDelete("{id}")]
         public ActionResult<Category> DeleteCategory(int id)
         {
-            _repository.DeleteCategory(id);
+            _repository.deleteCategory(id);
             List<Category> categories = _repository.getAllCategory();
             return Ok(categories);
         }

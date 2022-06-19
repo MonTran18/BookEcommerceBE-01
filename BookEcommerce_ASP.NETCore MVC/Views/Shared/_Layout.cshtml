@@ -22,6 +22,7 @@
 
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -53,10 +54,10 @@
                         <div class="navbar-nav mr-auto">
                             <a class="nav-item nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ</a>
                             <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Product">Sản Phẩm</a>
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="ProductDetail">Chi Tiết</a>
+                           @* <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="ProductDetail">Chi Tiết</a>*@
                             <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Cart">Giỏ Hàng</a>
                             <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Thanh Toán</a>
-
+                            
 
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Thêm</a>
@@ -67,21 +68,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="navbar-nav ml-auto">
-                             <div class="nav-item dropdown">
-                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                 <div class="dropdown-menu">
-                                     <a href="login.html" class="dropdown-item">Login</a>
-                                     <a href="register.html" class="dropdown-item">Register</a>
-                                 </div>
-                             </div>
-                         </div>-->
 
                         <div class="navbar-nav ml-auto">
                             <a class="nav-item nav-right" asp-area="" asp-controller="Home" asp-action="Register">Đăng Ký</a>
                             <a class="nav-item nav-right" asp-area="" asp-controller="Home" asp-action="Login">Đăng Nhập</a>
                         </div>
-
+                       
                     </div>
                 </nav>
             </div>

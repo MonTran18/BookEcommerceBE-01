@@ -15,7 +15,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
         {
             _context = context;
         }
-        public void AddAuthor(Author newauthor)
+        public void addAuthor(Author newauthor)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteAuthor(int authorId)
+        public bool deleteAuthor(int authorId)
         {
             Author author = _context.Authors.Find(authorId);
             if (author != null)
@@ -59,7 +59,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return author;
         }
 
-        public bool UpdateAuthor(Author newauthor)
+        public bool searchAuthor(Author keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateAuthor(Author newauthor)
         {
             Author author = _context.Authors.SingleOrDefault(author => author.Id.Equals(newauthor.Id));
             if (author != null)

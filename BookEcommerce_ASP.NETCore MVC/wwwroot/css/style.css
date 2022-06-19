@@ -424,6 +424,17 @@ h2 {
     margin-bottom: 30px;
 }
 
+.header .col-md-6 {
+  background-color:white;
+  margin-left:15px;
+}
+
+.header .col-md-6 img {
+    max-width: 50%;
+    height: auto;
+    margin-left: 120px;
+}  
+
 .header .navbar {
     padding: 0;
     height: 100%;
@@ -694,6 +705,8 @@ h2 {
 .product-item {
     position: relative;
     height: 150px;
+    background-color:white;
+
 }
 
 .product-item .product-title {
@@ -928,6 +941,7 @@ h2 {
     width: 100%;
     padding: 30px 0;
 }
+
 
 .product-view .product-view-top {
     padding: 30px;
@@ -1605,6 +1619,14 @@ h2 {
     padding-top: 12px;
     border-top: 1px solid #dddddd;
     margin: 0;
+}
+
+.cart-page .cart-summary .cart-btn a {
+    margin: 10px 10px;
+}
+
+.cart-page .cart-summary .cart-btn a {
+    margin: 10px 10px;
 }
 
 .cart-page .cart-summary .cart-btn button {

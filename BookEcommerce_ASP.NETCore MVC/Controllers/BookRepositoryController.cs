@@ -32,24 +32,24 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBook([FromBody]Book newbook)
+        public ActionResult AddBook([FromBody] Book newbook)
         {
-            _repository.AddBook(newbook);
+            _repository.addBook(newbook);
             List<Book> books = _repository.getAllBook();
             return Ok(books);
         }
 
         [HttpPut]
-        public ActionResult UpdateBook([FromBody]Book newbook)
+        public ActionResult UpdateBook([FromBody] Book newbook)
         {
-            _repository.UpdateBook(newbook);
+            _repository.updateBook(newbook);
             return Ok(newbook);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult <Book> DeleteBook(int id)
+        public ActionResult<Book> DeleteBook(int id)
         {
-            _repository.DeleteBook(id);
+            _repository.deleteBook(id);
             List<Book> books = _repository.getAllBook();
             return Ok(books);
         }

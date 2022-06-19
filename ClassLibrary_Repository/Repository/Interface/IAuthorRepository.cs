@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IAuthorRepository
     {
+        bool searchAuthor(Author keyword);
         List<Author> getAllAuthor();
-        void AddAuthor(Author newauthor);
-        bool UpdateAuthor(Author newauthor);
-        bool DeleteAuthor(int authorId);
+        void addAuthor(Author newauthor);
+        bool updateAuthor(Author newauthor);
+        bool deleteAuthor(int authorId);
         Author getAuthor(int authorId);
     }
 }

@@ -12,7 +12,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
     {
         private readonly BookEcommerceContext _context;
         public RoleRepository(BookEcommerceContext context) => _context = context;
-        public void AddRole(Role newrole)
+        public void addRole(Role newrole)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteRole(int roleId)
+        public bool deleteRole(int roleId)
         {
             Role role = _context.Roles.Find(roleId);
             if (role != null)
@@ -55,7 +55,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return role;
         }
 
-        public bool UpdateRole(Role newrole)
+        public bool searchRole(Role keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateRole(Role newrole)
         {
             Role role = _context.Roles.SingleOrDefault(role => role.Id.Equals(newrole.Id));
             if (role != null)

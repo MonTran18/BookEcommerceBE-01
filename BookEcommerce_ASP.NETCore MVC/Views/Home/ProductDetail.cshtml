@@ -16,21 +16,16 @@
                             <div class="row align-items-center">
                                 <div class="col-md-5">
                                     <div class="product-slider-single normal-slider">
-                                        <img src="img/product-1.jpg" alt="Product Image">
-                                        <img src="img/product-3.jpg" alt="Product Image">
-                                        <img src="img/product-5.jpg" alt="Product Image">
-                                        <img src="img/product-7.jpg" alt="Product Image">
-                                        <img src="img/product-9.jpg" alt="Product Image">
-                                        <img src="img/product-10.jpg" alt="Product Image">
+                                        <img src="~/image/@Model.Image" alt="Product Image">
                                     </div>
-                                    <div class="product-slider-single-nav normal-slider">
+@*                                    <div class="product-slider-single-nav normal-slider">
                                         <div class="slider-nav-img"><img src="img/product-1.jpg" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/product-3.jpg" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/product-5.jpg" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/product-7.jpg" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/product-9.jpg" alt="Product Image"></div>
                                         <div class="slider-nav-img"><img src="img/product-10.jpg" alt="Product Image"></div>
-                                    </div>
+                                    </div>*@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="product-content">
@@ -38,7 +33,7 @@
 
                                         <div class="price">
                                             <h4>Price:</h4>
-                                            <p>@Model.Price</p>
+                                            <p>@Model.Price</p><p>.000đ</p>
                                         </div>
                                         <div class="quantity">
                                             <h4>Quantity:</h4>
@@ -69,7 +64,7 @@
                                         <a class="nav-link" data-toggle="pill" href="#specification">Thông Tin Chi Tiết</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="pill" href="#reviews">Đánh Giá (1)</a>
+                                        <a class="nav-link" data-toggle="pill" href="#reviews">Đánh Giá</a>
                                     </li>
                                 </ul>
 
@@ -83,13 +78,10 @@
                                     </div>
                                     <div id="specification" class="container tab-pane fade">
                                         <h4>Thông Tin Chi Tiết</h4>
-                                        <ul>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                        </ul>
+                                        @foreach(var item in ptservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)
+                                        {
+                                            @*@Model.Description*@
+                                        }
                                     </div>
                                     <div id="reviews" class="container tab-pane fade">
                                         @foreach(var item in Model.Reviews)
@@ -165,7 +157,7 @@
                                             <div class="product-action">
                                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
                                                 <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-search"></i></a>
+                                                <a href="~/Home/ProductDetail/@item.Id"><i class="fa fa-search"></i></a>
                                             </div>
                                         </div>
                                         <div class="product-price">
@@ -176,118 +168,6 @@
                                     </div>
                                 </div>
                                 }
-                            @*    <div class="col-lg-3">
-                                    <div class="product-item">
-                                        <div class="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="img/product-8.jpg" alt="Product Image">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <h3><span>$</span>99</h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="product-item">
-                                        <div class="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="img/product-6.jpg" alt="Product Image">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <h3><span>$</span>99</h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="product-item">
-                                        <div class="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="img/product-4.jpg" alt="Product Image">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <h3><span>$</span>99</h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="product-item">
-                                        <div class="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="img/product-2.jpg" alt="Product Image">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <h3><span>$</span>99</h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua Ngay</a>
-                                        </div>
-                                    </div>
-                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -301,21 +181,9 @@
                                               @foreach(var item in mnservice.getAllCategories() as List<ClassLibrary_RepositoryDLL.Entities.Category>)
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-female"></i>@item.Categoryname</a>
+                                        <a class="nav-link" href="~/Home/Product/@item.Categoryname"><i class="fa fa-female"></i>@item.Categoryname</a>
                                     </li>
                                 }
-                                 @*   <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-female"></i>Sách Tiếng Việt</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-child"></i>Sách Tiếng Anh</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Sách Thiếu Nhi</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Truyện Trinh Thám</a>
-                                    </li>*@
                                 </ul>
                             </nav>
                         </div>
@@ -325,7 +193,7 @@
                             <ul>
                                  @foreach(var item in ptservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)
                                 {
-                                <li><a href="#">@item.AuthorName</a><span>(@item.StorageQuantity)</span></li>
+                                <li><a href="#">@item.Authorname</a><span>(@item.StorageQuantity)</span></li>
                                  }
                              @*   <li><a href="#">Nulla </a><span>(45)</span></li>
                                 <li><a href="#">Curabitur </a><span>(34)</span></li>
@@ -338,8 +206,8 @@
                         
                         <div class="sidebar-widget tag">
                             <h2 class="title">Thẻ Tags</h2>
-                            <a href="#">Lorem ipsum</a>
-                            <a href="#">Vivamus</a>
+                            <a href="#">@Model.Author</a>
+                           @* <a href="#">Vivamus</a>
                             <a href="#">Phasellus</a>
                             <a href="#">pulvinar</a>
                             <a href="#">Curabitur</a>
@@ -349,7 +217,7 @@
                             <a href="#">Sit amet</a>
                             <a href="#">Vel posuere</a>
                             <a href="#">orci luctus</a>
-                            <a href="#">Nam lorem</a>
+                            <a href="#">Nam lorem</a>*@
                         </div>
                     </div>
                     <!-- Side Bar End -->

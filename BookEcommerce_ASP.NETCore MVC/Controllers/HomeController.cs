@@ -10,25 +10,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BookEcommerce_ASP.NETCore_MVC.Controllers;
 
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private IBookRepository bookRepository = null;
-        private ICategoryRepository categoryRepository = null;
+        private readonly IBookRepository _bookrepo;
         private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger, IBookRepository _bookRepository, ICategoryRepository _categoryRepository)
+        public HomeController(ILogger<HomeController> logger, IBookRepository bookrepo)
         {
             _logger = logger;
-            bookRepository = _bookRepository;
-            categoryRepository = _categoryRepository;
+            _bookrepo = bookrepo;
         }
 
-        public IActionResult Index(int Id)
+        public IActionResult Index()
         {
-            Category category = categoryRepository.getCategory(Id);
-            return View(category);
+            return View();
         }
 
         public IActionResult Product()
@@ -38,7 +36,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 
         public IActionResult ProductDetail(int Id)
         {
-            Book product = bookRepository.getDetailBook(Id);
+            Book product = _bookrepo.getDetailBook(Id);
             return View(product);
         }
 

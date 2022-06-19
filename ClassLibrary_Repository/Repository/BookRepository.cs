@@ -18,10 +18,8 @@ namespace ClassLibrary_RepositoryDLL.Repository
         }
         public List<Book> getAllBook()
         {
-            List<Book> books = _context.Books
-
-                .Include(x => x.Reviews).ToList();
-                return books;
+            List<Book> books = _context.Books.ToList();
+            return books;
         }
 
         public Book getDetailBook(int bookId)
@@ -29,20 +27,20 @@ namespace ClassLibrary_RepositoryDLL.Repository
             Book book = _context.Books.Find(bookId);
             return book;
         }
-        public void AddBook(Book newbook)
+        public void addBook(Book newbook)
         {
             try
             {
                 _context.Books.Add(newbook);
                 _context.SaveChanges();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 //Exception exception = new Exception("Can not ADD new book to database");
                 System.Diagnostics.Debug.WriteLine(exception.Message);
             }
         }
-        public bool UpdateBook(Book newbook)
+        public bool updateBook(Book newbook)
         {
             Book book = _context.Books.SingleOrDefault(book => book.Id.Equals(newbook.Id));
             if (book != null)
@@ -70,7 +68,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return false;
         }
 
-        public bool DeleteBook(int bookId)
+        public bool deleteBook(int bookId)
         {
             //Book book = _context.Books.Find(bookId);
             Book book = _context.Books.SingleOrDefault(book => book.Id == bookId);
@@ -88,6 +86,11 @@ namespace ClassLibrary_RepositoryDLL.Repository
                 }
             }
             return false;
+        }
+
+        public bool searchBook(Book keyword)
+        {
+            throw new NotImplementedException();
         }
     }
 }

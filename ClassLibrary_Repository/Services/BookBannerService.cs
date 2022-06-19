@@ -20,11 +20,16 @@ namespace ClassLibrary_RepositoryDLL.Services
             _mapper = mapper;
             _repo = repo;
         }
-        public BookModel getDetailBook(int bookId)
+        public BannerModel getDetailBook(int bookId)
         {
             //var bookmodel = ObjectMapper.Mapper.Map<Book>(_repo.getDetailBook(bookId));
-            var bookmodel = _mapper.Map<BookModel>(_repo.getDetailBook(bookId));
+            var bookmodel = _mapper.Map<BannerModel>(_repo.getDetailBook(bookId));
             return bookmodel;
+        }
+
+        BookModel IBookBannerService.getDetailBook(int bookId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

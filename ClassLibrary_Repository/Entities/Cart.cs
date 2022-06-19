@@ -7,12 +7,15 @@ namespace ClassLibrary_RepositoryDLL.Entities
 {
     public partial class Cart
     {
+        public Cart()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
+
         public int Id { get; set; }
         public int? AccountId { get; set; }
-        public int? BookId { get; set; }
-        public int? Quantity { get; set; }
 
         public virtual Account Account { get; set; }
-        public virtual Book Book { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

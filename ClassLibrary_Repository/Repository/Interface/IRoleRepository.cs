@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IRoleRepository
     {
+        bool searchRole(Role keyword);
         List<Role> getAllRole();
-        void AddRole (Role newrole);
-        bool UpdateRole (Role newrole);
-        bool DeleteRole(int roleId);
+        void addRole(Role newrole);
+        bool updateRole(Role newrole);
+        bool deleteRole(int roleId);
         Role getRole(int roleId);
     }
 }

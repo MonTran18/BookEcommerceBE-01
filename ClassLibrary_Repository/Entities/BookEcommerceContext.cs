@@ -21,6 +21,7 @@ namespace ClassLibrary_RepositoryDLL.Entities
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Checkout> Checkouts { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
@@ -33,13 +34,15 @@ namespace ClassLibrary_RepositoryDLL.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
+                optionsBuilder.UseSqlServer("server=DESKTOP-D1C5T3V\\DANGHP;user Id=sa;password=1;database=BookEcommerce");
                 //optionsBuilder.UseSqlServer("server=DESKTOP-PCH6BP9; user Id=sa;password=1;database=BookEcommerce");
-                optionsBuilder.UseSqlServer("server=DESKTOP-D1C5T3V\\DANGHP; user Id=sa;password=1;database=BookEcommerce");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Account>(entity =>
             {
                 entity.ToTable("Account");
@@ -65,8 +68,6 @@ namespace ClassLibrary_RepositoryDLL.Entities
             {
                 entity.ToTable("Book");
 
-                entity.Property(e => e.Image).HasColumnType("image");
-
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Books)
                     .HasForeignKey(d => d.AuthorId)
@@ -91,11 +92,25 @@ namespace ClassLibrary_RepositoryDLL.Entities
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.AccountId)
                     .HasConstraintName("FK_Cart_Account");
+            });
+
+            modelBuilder.Entity<CartItem>(entity =>
+            {
+                entity.ToTable("Cart_Item");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Book)
-                    .WithMany(p => p.Carts)
+                    .WithMany(p => p.CartItems)
                     .HasForeignKey(d => d.BookId)
-                    .HasConstraintName("FK_Cart_Book");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Cart_Item_Book");
+
+                entity.HasOne(d => d.Cart)
+                    .WithMany(p => p.CartItems)
+                    .HasForeignKey(d => d.CartId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Cart_Item_Cart");
             });
 
             modelBuilder.Entity<Category>(entity =>

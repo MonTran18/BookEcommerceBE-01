@@ -9,7 +9,7 @@ namespace ClassLibrary_RepositoryDLL.Entities
     {
         public Book()
         {
-            Carts = new HashSet<Cart>();
+            CartItems = new HashSet<CartItem>();
             Reviews = new HashSet<Review>();
         }
 
@@ -18,15 +18,15 @@ namespace ClassLibrary_RepositoryDLL.Entities
         public int? AuthorId { get; set; }
         public int? PublisherId { get; set; }
         public double? Price { get; set; }
+        public string Image { get; set; }
         public string Description { get; set; }
         public int? CategoryId { get; set; }
         public int? StorageQuantity { get; set; }
-        public string Image { get; set; }
 
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }
         public virtual Publisher Publisher { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }
 }

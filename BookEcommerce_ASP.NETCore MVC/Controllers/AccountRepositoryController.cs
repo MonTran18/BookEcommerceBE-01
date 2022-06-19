@@ -7,7 +7,7 @@ using ClassLibrary_RepositoryDLL.Repository.Interface;
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 {
     [Route("api/accounts")]
-    [ApiController]    
+    [ApiController]
     public class AccountRepositoryController : Controller
     {
         IAccountRepository _repository;
@@ -34,7 +34,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPost]
         public ActionResult AddAccount([FromBody] Account newaccount)
         {
-            _repository.AddAccount(newaccount);
+            _repository.addAccount(newaccount);
             List<Account> accounts = _repository.getAllAccount();
             return Ok(accounts);
         }
@@ -42,14 +42,14 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPut]
         public ActionResult UpdateAccount([FromBody] Account newaccount)
         {
-            _repository.UpdateAccount(newaccount);
+            _repository.updateAccount(newaccount);
             return Ok(newaccount);
         }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteAccount(int id)
         {
-            _repository.DeleteAccount(id);
+            _repository.deleteAccount(id);
             List<Account> accounts = _repository.getAllAccount();
             return Ok(accounts);
         }

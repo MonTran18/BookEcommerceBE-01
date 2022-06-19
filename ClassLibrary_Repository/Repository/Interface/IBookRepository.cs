@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IBookRepository
     {
+        bool searchBook(Book keyword);
         List<Book> getAllBook();
-        void AddBook(Book newbook);
-        bool UpdateBook(Book newbook);
-        bool DeleteBook(int bookId);
+        void addBook(Book newbook);
+        bool updateBook(Book newbook);
+        bool deleteBook(int bookId);
         Book getDetailBook(int bookId);
     }
 }

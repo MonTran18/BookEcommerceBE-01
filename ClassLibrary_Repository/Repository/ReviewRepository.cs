@@ -8,25 +8,25 @@ using ClassLibrary_RepositoryDLL.Repository.Interface;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
-    public class ReviewRepository: IReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
         private readonly BookEcommerceContext _context;
         public ReviewRepository(BookEcommerceContext context) => _context = context;
 
-        public void AddReview(Review newreview)
+        public void addReview(Review newreview)
         {
             try
             {
                 _context.Reviews.Add(newreview);
                 _context.SaveChanges();
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
-        public bool DeleteReview(int reviewId)
+        public bool deleteReview(int reviewId)
         {
             Review review = _context.Reviews.Find(reviewId);
             if (review != null)
@@ -55,10 +55,15 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return review;
         }
 
-        public bool UpdateReview(Review newreview)
+        public bool searchReview(Review keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateReview(Review newreview)
         {
             Review review = _context.Reviews.SingleOrDefault(review => review.Id.Equals(newreview.Id));
-            if(review != null)
+            if (review != null)
             {
                 try
                 {

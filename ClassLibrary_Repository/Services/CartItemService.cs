@@ -10,11 +10,11 @@ using AutoMapper;
 
 namespace ClassLibrary_RepositoryDLL.Services
 {
-    public class ProductService : IProductService
+    public class CartItemService : ICartItemService
     {
         private readonly IBookRepository _repo;
         private readonly IMapper _mapper;
-        public ProductService(IBookRepository repo, IMapper mapper)
+        public CartItemService(IBookRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;

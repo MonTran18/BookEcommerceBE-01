@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary_RepositoryDLL.Entities;
 using ClassLibrary_RepositoryDLL.Repository.Interface;
+using ClassLibrary_RepositoryDLL.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
@@ -15,7 +17,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
         {
             _context = context;
         }
-        public void AddCategory(Category newcategory)
+        public void addCategory(Category newcategory)
         {
             try
             {
@@ -28,7 +30,7 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
-        public bool DeleteCategory(int categoryId)
+        public bool deleteCategory(int categoryId)
         {
             Category category = _context.Categories.Find(categoryId);
             if (category != null)
@@ -65,7 +67,12 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return category;
         }
 
-        public bool UpdateCategory(Category newcategory)
+        public bool searchCate(Category keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool updateCategory(Category newcategory)
         {
             Category category = _context.Categories.SingleOrDefault(category => category.Id.Equals(newcategory.Id));
             if (category != null)

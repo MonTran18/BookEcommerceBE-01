@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IPaymentMethodRepository
     {
+        bool searchPayment(PaymentMethod keyword);
         List<PaymentMethod> getAllPaymentMethod();
-        void AddPaymentMethod(PaymentMethod newpaymethod);
-        bool UpdatePaymentMethod(PaymentMethod newpaymethod);
-        bool DeletePaymentMethod(int paymethodId);
+        void addPaymentMethod(PaymentMethod newpaymethod);
+        bool updatePaymentMethod(PaymentMethod newpaymethod);
+        bool deletePaymentMethod(int paymethodId);
         PaymentMethod getPaymentMethod(int paymethodId);
     }
 }

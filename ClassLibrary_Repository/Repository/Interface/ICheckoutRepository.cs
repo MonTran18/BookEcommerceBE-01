@@ -9,10 +9,11 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface ICheckoutRepository
     {
+        bool searchCheckout(Checkout keyword);
         List<Checkout> getAllCheckout();
-        void AddCheckout(Checkout newcheckout);
-        bool UpdateCheckout(Checkout newcheckout);
-        bool DeleteCheckout(int checkoutId);
+        void addCheckout(Checkout newcheckout);
+        bool updateCheckout(Checkout newcheckout);
+        bool deleteCheckout(int checkoutId);
         Checkout getDetailBook(int checkoutId);
     }
 }

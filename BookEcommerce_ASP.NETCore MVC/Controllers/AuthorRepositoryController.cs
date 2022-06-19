@@ -34,7 +34,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPost]
         public ActionResult AddAuthor([FromBody] Author newauthor)
         {
-            _repository.AddAuthor(newauthor);
+            _repository.addAuthor(newauthor);
             List<Author> authors = _repository.getAllAuthor();
             return Ok(authors);
         }
@@ -42,14 +42,14 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [HttpPut]
         public ActionResult UpdateAuthor([FromBody] Author newauthor)
         {
-            _repository.UpdateAuthor(newauthor);
+            _repository.updateAuthor(newauthor);
             return Ok(newauthor);
         }
 
         [HttpDelete("{id}")]
         public ActionResult<Author> DeleteAuthor(int id)
         {
-            _repository.DeleteAuthor(id);
+            _repository.deleteAuthor(id);
             List<Author> authors = _repository.getAllAuthor();
             return Ok(authors);
         }
