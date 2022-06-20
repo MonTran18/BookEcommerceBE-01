@@ -1606,6 +1606,7 @@ h2 {
 .cart-page .cart-summary .cart-content h1 {
     font-size: 22px;
     margin-bottom: 20px;
+    text-align: center
 }
 
 .cart-page .cart-summary .cart-content p span,
@@ -1639,24 +1640,9 @@ h2 {
     background: #53CEF8;
     border: none;
     border-radius: 4px;
+    float:right
 }
 
-.cart-page .cart-summary .cart-btn button:hover {
-    color: #53CEF8;
-    background: #000000;
-}
-
-.cart-page .cart-summary .cart-btn button:first-child {
-    margin-right: 25px;
-    color:#53CEF8;
-    background: #ffffff;
-    border: 1px solid #53CEF8;
-}
-
-.cart-page .cart-summary .cart-btn button:first-child:hover {
-    color: #ffffff;
-    background: #53CEF8;
-}
 
 
 /**********************************/

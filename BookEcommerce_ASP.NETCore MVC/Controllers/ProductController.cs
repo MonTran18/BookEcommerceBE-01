@@ -74,7 +74,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             if (cartItem != null)
             {
                 // Đã tồn tại, tăng thêm 1
-                cartItem.Quantity = Quantity++;
+                cartItem.Quantity = Quantity ;
             }
             SaveCart(cart);
             // Trả về mã thành công (không có nội dung gì - chỉ để Ajax gọi)
