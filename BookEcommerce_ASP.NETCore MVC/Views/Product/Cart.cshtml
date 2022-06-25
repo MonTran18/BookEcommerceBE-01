@@ -27,11 +27,12 @@
                                             <th>Update</th>
                                         </tr>
                                     </thead>
+                                    <tbody class="align-middle">
                                     @foreach(var cartItem in Model)
                                     {
-                                    var thanhtien = @cartItem.Quantity * cartItem.Book.Price;
+                                    var thanhtien = cartItem.Quantity * cartItem.Book.Price;
                                     total += thanhtien;
-                                    <tbody class="align-middle">
+                                       <form method="post" action="~/product/updatecart">
                                         <tr>
                                             <td>
                                                 <div class="img">
@@ -42,19 +43,28 @@
                                             <td>@cartItem.Book.Price</td>
                                             <td>
                                                 <div class="qty">
-                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                    <input type="text" value="1" asp-for="@cartItem.Quantity" id="@($"quantity-{cartItem.Book.Id}")">
-                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                                    @*<button class="btn-minus"><i class="fa fa-minus"></i></button> *@
+                                                    @Html.Hidden("BookId",@cartItem.Book.Id);
+                                                    @Html.TextBox("Quantity",@cartItem.Quantity);
+                                                    @*<button class="btn-plus"><i class="fa fa-plus"></i></button>*@
                                                 </div>
                                             </td>
                                             <td>@thanhtien</td>
                                             <td><a asp-action="RemoveCartItem" asp-route-id="@cartItem.BookId"><i class="fa fa-trash"></i></a></td>
-                                            <td><a asp-action="UpdateCart" asp-route-id="@cartItem.BookId"><i class="fa fa-check"></i></a></td>
+                                           <td>
+                                                <button data-id="@cartItem.Book.Id" data-qty="@cartItem.Quantity">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                  
+                                            </td>
+                                      
+
 
                                         </tr>
-                 
-                                    </tbody>
+                                     </form>
+                                    
                                     }
+                                    </tbody>
                                 </table>
                                 }
                             </div>
@@ -68,15 +78,17 @@
                                 
                                 <div class="col-md-12">
                                     <div class="cart-summary">
+                                   
                                         <div class="cart-content">
                                             <h1>Tổng Thanh Toán</h1>
-                                            <p>Thành Tiền: <span>$99</span></p>
+                                            <p>Thành Tiền: <span>@total.000đ</span></p>
                                             <p>Giá Ship: <span>$1</span></p>
-                                            <h2>Tổng Tiền: <span>$100</span></h2>
+                                            <h2>Tổng Tiền: <span>@total.000đ</span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <button>Thanh Toán</button>
+                                            <a asp-controller="Home" asp-action="Checkout" class="btn btn-success">Thanh Toán</a>
                                         </div>
+                                  
                                     </div>
                                 </div>
                             </div>

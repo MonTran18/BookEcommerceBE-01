@@ -51,8 +51,8 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             SaveCart(cart);
             return RedirectToAction(nameof(Cart));
         }
-        //[/*Route("removecart/{id}",*/ Name = "RemoveCartItem")]
-        public IActionResult RemoveCartItem(/*[FromRoute] */int id)
+        [Route("removecart/{id}", Name = "RemoveCartItem")]
+        public IActionResult RemoveCartItem([FromRoute] int id)
         {
             var cart = getCartItems();
             var cartItem = cart.Find(p => p.BookId == id);
@@ -65,16 +65,24 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             SaveCart(cart);
             return RedirectToAction(nameof(Cart));
         }
-        //[Route("updatecart/{id}", Name = "UpdateCart")]
-        public IActionResult UpdateCart(/*[FromRoute]*/ int id)
+
+
+       //[Route("/updatecart", Name = "UpdateCart")]
+       [HttpPost]
+        public IActionResult UpdateCart()
         {
+
+            int id = int.Parse( Request.Form["BookId"].ToString());
+            int quantity = int.Parse(Request.Form["Quantity"].ToString());
+
             // Cập nhật Cart thay đổi số lượng quantity ...
-            var cart = getCartItems();
-            var cartItem = cart.Find(p => p.BookId == id);
+            List<CartItem> cart = getCartItems();
+            CartItem cartItem = cart.Find(p => p.Book.Id == id);
+
             if (cartItem != null)
             {
                 // Đã tồn tại, tăng thêm 1
-                cartItem.Quantity = Quantity ;
+                cartItem.Quantity = quantity;
             }
             SaveCart(cart);
             // Trả về mã thành công (không có nội dung gì - chỉ để Ajax gọi)

@@ -1626,9 +1626,10 @@ h2 {
     margin: 10px 10px;
 }
 
-.cart-page .cart-summary .cart-btn a {
-    margin: 10px 10px;
-}
+    .cart-page .cart-summary .cart-btn a {
+        margin: 10px 10px;
+        float: right
+    }
 
 .cart-page .cart-summary .cart-btn button {
     margin-top: 15px;
