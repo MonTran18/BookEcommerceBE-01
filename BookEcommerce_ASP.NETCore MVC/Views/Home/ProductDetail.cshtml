@@ -3,6 +3,7 @@
 *@
 @inject ClassLibrary_RepositoryDLL.Services.IMenuService mnservice
 @inject ClassLibrary_RepositoryDLL.Services.IProductService ptservice
+@inject ClassLibrary_RepositoryDLL.Services.IAuthorService auservice
 @model ClassLibrary_RepositoryDLL.Entities.Book
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -184,34 +185,14 @@
                         <div class="sidebar-widget brands">
                             <h2 class="title">Nhà Xuất Bản</h2>
                             <ul>
-                                 @foreach(var item in ptservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)
+                                 @foreach(var item in auservice.getAllAuthor() as List<ClassLibrary_RepositoryDLL.Entities.Author>)
                                 {
-                                <li><a href="#">@item.Authorname</a><span>(@item.StorageQuantity)</span></li>
+                                     <li><a href="~/Home/Product/@item.Books">@item.Authorname</a></li>
                                  }
-                             @*   <li><a href="#">Nulla </a><span>(45)</span></li>
-                                <li><a href="#">Curabitur </a><span>(34)</span></li>
-                                <li><a href="#">Nunc </a><span>(67)</span></li>
-                                <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                                <li><a href="#">Fusce </a><span>(89)</span></li>
-                                <li><a href="#">Sagittis</a><span>(28)</span></li>*@
                             </ul>
                         </div>
                         
-                        <div class="sidebar-widget tag">
-                            <h2 class="title">Thẻ Tags</h2>
-                            <a href="#">@Model.Author</a>
-                           @* <a href="#">Vivamus</a>
-                            <a href="#">Phasellus</a>
-                            <a href="#">pulvinar</a>
-                            <a href="#">Curabitur</a>
-                            <a href="#">Fusce</a>
-                            <a href="#">Sem quis</a>
-                            <a href="#">Mollis metus</a>
-                            <a href="#">Sit amet</a>
-                            <a href="#">Vel posuere</a>
-                            <a href="#">orci luctus</a>
-                            <a href="#">Nam lorem</a>*@
-                        </div>
+   
                     </div>
                     <!-- Side Bar End -->
                 </div>

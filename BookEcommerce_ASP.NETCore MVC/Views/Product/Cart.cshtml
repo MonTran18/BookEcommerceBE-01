@@ -52,9 +52,9 @@
                                             <td>@thanhtien</td>
                                             <td><a asp-action="RemoveCartItem" asp-route-id="@cartItem.BookId"><i class="fa fa-trash"></i></a></td>
                                            <td>
-                                                <button data-id="@cartItem.Book.Id" data-qty="@cartItem.Quantity">
+                                                <a data-id="@cartItem.Book.Id" data-qty="@cartItem.Quantity">
                                                     <i class="fa fa-check"></i>
-                                                </button>
+                                                </a>
                                   
                                             </td>
                                       

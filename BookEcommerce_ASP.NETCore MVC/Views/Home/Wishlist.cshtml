@@ -1,6 +1,6 @@
 ﻿@inject ClassLibrary_RepositoryDLL.Services.IProductService ptservice
 @model ClassLibrary_RepositoryDLL.Models.ProductModel
-@inject ClassLibrary_RepositoryDLL.Services.ICartItemService cartservice
+
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -27,8 +27,8 @@
                                     </tr>
                                 </thead>
                                 <tbody class="align-middle">
-                                         @foreach(var item in cartservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)       
-                                            {
+                                       @*  @foreach(var item in cartservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)       
+                                            {*@
                                         <tr>
                                             <td>
                                                 <div class="img">
@@ -47,7 +47,7 @@
                                             <td><button class="btn-cart" href="~/Home/Cart" >Thêm Vào Giỏ</button></td>
                                             <td><a asp-route="RemoveCartItem" asp-route-bookid ="@Model.Id"><i class="fa fa-trash"></i></a></td>
                                         </tr>
-                                        }
+                                      @*  }*@
                                 </tbody>
                             </table>
                         

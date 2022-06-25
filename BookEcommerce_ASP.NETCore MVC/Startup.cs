@@ -46,8 +46,8 @@ namespace BookEcommerce_ASP.NETCore_MVC
             services.AddMvc();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IBookBannerService, BookBannerService>();
-            services.AddTransient<ICartItemService, CartItemService>();
+            services.AddTransient<IAuthorService, AuthorService>();
+
 
 
             services.AddSession(options =>
