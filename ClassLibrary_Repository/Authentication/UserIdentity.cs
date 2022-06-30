@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Identity;
 
-namespace ClassLibrary_RepositoryDLL.Models
+namespace ClassLibrary_RepositoryDLL.Authentication
 {
-    public class BannerModel
+    public class UserIdentity
     {
-        public string Image { get; set; }
     }
 }

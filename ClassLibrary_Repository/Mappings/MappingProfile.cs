@@ -16,7 +16,7 @@ namespace ClassLibrary_RepositoryDLL.Mappings
         public MappingProfile()
         {
             CreateMap<Book, ProductModel>().ForMember(destination => destination.Name, action => action.MapFrom(source => source.Bookname));
-            CreateMap<Book, BannerModel>().ForMember(destination => destination.Image, action => action.MapFrom(source => source.Image));
+
             CreateMap<Book, Author>().ForMember(destination => destination.Id, action => action.MapFrom(source => source.Id));
             //CreateMap<Book, Category>();
             //CreateMap<Book, Publisher>();

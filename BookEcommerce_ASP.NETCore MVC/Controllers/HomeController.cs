@@ -59,12 +59,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         {
             return View();
         }
-
-        public IActionResult Wishlist()
-        {
-            return View();
-        }
-
+        [Route("/login", Name = "Login")]
         public IActionResult Login()
         {
             return View();

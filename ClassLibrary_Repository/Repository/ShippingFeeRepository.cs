@@ -55,25 +55,6 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return shippingfee;
         }
 
-        //Search by Shipping Fee
-        public bool searchShip(ShippingFee keyword)
-        {
-            ShippingFee shippingfee = _context.ShippingFees.SingleOrDefault(shippingfee => shippingfee.Fee.Equals(keyword));
-            if (shippingfee != null)
-            {
-                try
-                {
-                    _context.ShippingFees.Find(keyword);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
-            }
-            return false;
-        }
-
         public bool updateShippingFee(ShippingFee newshippingfee)
         {
             ShippingFee shippingfee = _context.ShippingFees.SingleOrDefault(shippingfee => shippingfee.Id.Equals(newshippingfee.Id));

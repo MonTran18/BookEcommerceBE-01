@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary_RepositoryDLL.Entities;
 using ClassLibrary_RepositoryDLL.Repository.Interface;
-using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
@@ -36,7 +35,6 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
             catch (Exception exception)
             {
-                //Exception exception = new Exception("Can not ADD new book to database");
                 System.Diagnostics.Debug.WriteLine(exception.Message);
             }
         }
@@ -88,9 +86,48 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return false;
         }
 
-        public bool searchBook(Book keyword)
+        public List<Book> searchBook(string keyword)
         {
-            throw new NotImplementedException();
+            List<Book> books = _context.Books.Where(book => book.Bookname.Contains(keyword)).ToList();
+            return books;
+        }
+
+        public bool updateImage(Book newbook)
+        {
+            Book book = _context.Books.SingleOrDefault(book => book.Id.Equals(newbook.Id));
+            if (book != null)
+            {
+                try
+                {
+                    book.Image = newbook.Image;
+                    //_context.Books.Update(newbook);
+                    _context.SaveChanges();
+                    return true;
+                }
+                catch (Exception exception)
+                {
+                    System.Diagnostics.Debug.WriteLine(exception.Message);
+                }
+            }
+            return false;
+        }
+
+        public List<Book> selectByAuthorId(int authorId)
+        {
+            List<Book> books = _context.Books.Where(b => b.AuthorId == authorId).ToList();
+            return books;
+        }
+
+        public List<Book> selectByCateId(int cateId)
+        {
+            List<Book> books = _context.Books.Where(b => b.CategoryId == cateId).ToList();
+            return books;
+        }
+
+        public List<Book> selectByPubId(int pubId)
+        {
+            List<Book> books = _context.Books.Where(b => b.PublisherId == pubId).ToList();
+            return books;
         }
     }
 }

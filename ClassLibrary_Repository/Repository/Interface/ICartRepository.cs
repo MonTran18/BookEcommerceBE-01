@@ -9,7 +9,6 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface ICartRepository
     {
-        bool searchCart(Cart keyword);
         void addCart(Cart newcart);
         bool updateCart(Cart newcart);
         bool deleteCart(int cartId);

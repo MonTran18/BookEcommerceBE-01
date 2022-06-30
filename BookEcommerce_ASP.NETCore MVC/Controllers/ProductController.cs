@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
@@ -13,11 +14,13 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private readonly IBookRepository _repo;
+        private readonly ICheckoutRepository _checkoutRepo;
 
-        public ProductController(ILogger<ProductController> logger, IBookRepository repo)
+        public ProductController(ILogger<ProductController> logger, IBookRepository repo, ICheckoutRepository checkoutRepo)
         {
             _logger = logger;
             _repo = repo;
+            _checkoutRepo = checkoutRepo;
         }
 
         public IActionResult Index()
@@ -95,10 +98,45 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             return View(getCartItems());
         }
         [Route("/checkout")]
-        public IActionResult Checkout()
+        public IActionResult CheckOut([FromForm] string email, [FromForm] string address)
         {
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            // Xử lý khi đặt hàng
+            var cart = getCartItems();
+            ViewData["email"] = email;
+            ViewData["address"] = address;
+            ViewBag.cart = cart;
+            ViewBag.size = cart.Count;
+            if (HttpContext.Session.GetInt32("id") != null)
+            {
+                ViewBag.id = HttpContext.Session.GetInt32("id");
+            }
+            else return Redirect(Url.RouteUrl(new { area = "", controller = "Login", action = "Index" }));
+            //if (!string.IsNullOrEmpty(email))
+            //{
+            //    // hãy tạo cấu trúc db lưu lại đơn hàng và xóa cart khỏi session
+
+            //    ClearCart();
+            //    RedirectToAction(nameof(Index));
+            //}
+
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult checkoutConfirm(FormCollection formCollection)
+        //{
+        //    Checkout checkout = new Checkout();
+        //    checkout.CreateDate = System.DateTime.UtcNow;
+        //    checkout.Account.Fullname = formCollection["fullname"];
+        //    checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
+        //    checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
+        //    //checkout.Phone = formCollection["phonenumber"];
+        //    checkout.Payment.Paymentname = formCollection["paymentmethod"];
+        //    _checkoutRepo.addCheckout(checkout);
+        //    return RedirectToAction("Index", "HomeController");
+        //}
+
 
         //SESSION
         // JSON key 

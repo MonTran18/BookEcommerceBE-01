@@ -55,11 +55,6 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return payment;
         }
 
-        public bool searchPayment(PaymentMethod keyword)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool updatePaymentMethod(PaymentMethod newpaymethod)
         {
             PaymentMethod payment = _context.PaymentMethods.SingleOrDefault(payment => payment.Id.Equals(newpaymethod.Id));

@@ -55,9 +55,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return review;
         }
 
-        public bool searchReview(Review keyword)
+        public List<Review> searchReview(string keyword)
         {
-            throw new NotImplementedException();
+            List<Review> reviews = _context.Reviews.Where(r => r.Account.Username.Contains(keyword)).ToList();
+            return reviews;
         }
 
         public bool updateReview(Review newreview)

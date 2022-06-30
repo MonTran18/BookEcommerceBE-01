@@ -9,7 +9,7 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface ICategoryRepository
     {
-        bool searchCate(Category keyword);
+        List<Category> searchCate(string keyword);
         List<Category> getAllCategory();
         void addCategory(Category category);
         bool updateCategory(Category category);

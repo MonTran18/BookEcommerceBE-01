@@ -54,15 +54,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return checkouts;
         }
 
-        public Checkout getDetailBook(int checkoutId)
+        public Checkout getCheckout(int checkoutId)
         {
             Checkout checkout = _context.Checkouts.Find(checkoutId);
             return checkout;
-        }
-
-        public bool searchCheckout(Checkout keyword)
-        {
-            throw new NotImplementedException();
         }
 
         public bool updateCheckout(Checkout newcheckout)
@@ -72,15 +67,11 @@ namespace ClassLibrary_RepositoryDLL.Repository
             {
                 try
                 {
-                    checkout.AccountId = newcheckout.AccountId;
-                    checkout.Username = newcheckout.Username;
-                    checkout.CartId = newcheckout.CartId;
+                    checkout.Status = newcheckout.Status;
                     checkout.ShippingfeeId = newcheckout.ShippingfeeId;
-                    checkout.PaymentId = newcheckout.PaymentId;
-                    checkout.Total = newcheckout.Total;
                     checkout.Depositornumber = newcheckout.Depositornumber;
-                    checkout.Receivenember = newcheckout.Receivenember;
-                    checkout.Quantity = newcheckout.Quantity;
+                    checkout.Receivernumber = newcheckout.Receivernumber;
+                    checkout.PaymentId = newcheckout.PaymentId;
                     _context.Checkouts.Update(newcheckout);
                     _context.SaveChanges();
                     return true;

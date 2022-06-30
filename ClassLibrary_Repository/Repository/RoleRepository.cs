@@ -55,11 +55,6 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return role;
         }
 
-        public bool searchRole(Role keyword)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool updateRole(Role newrole)
         {
             Role role = _context.Roles.SingleOrDefault(role => role.Id.Equals(newrole.Id));

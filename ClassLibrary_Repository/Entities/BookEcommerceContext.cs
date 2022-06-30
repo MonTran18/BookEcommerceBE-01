@@ -24,6 +24,7 @@ namespace ClassLibrary_RepositoryDLL.Entities
         public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Checkout> Checkouts { get; set; }
+        public virtual DbSet<CheckoutDetail> CheckoutDetails { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
@@ -34,8 +35,8 @@ namespace ClassLibrary_RepositoryDLL.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=DESKTOP-D1C5T3V\\DANGHP;user Id=sa;password=1;database=BookEcommerce");
-                //optionsBuilder.UseSqlServer("server=DESKTOP-PCH6BP9; user Id=sa;password=1;database=BookEcommerce");
+                //optionsBuilder.UseSqlServer("server=DESKTOP-D1C5T3V\\DANGHP;user Id=sa;password=1;database=BookEcommerce");
+                optionsBuilder.UseSqlServer("server=.; user Id=sa;password=1;database=BookEcommerce");
             }
         }
 
@@ -98,8 +99,6 @@ namespace ClassLibrary_RepositoryDLL.Entities
             {
                 entity.ToTable("Cart_Item");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Book)
                     .WithMany(p => p.CartItems)
                     .HasForeignKey(d => d.BookId)
@@ -124,13 +123,9 @@ namespace ClassLibrary_RepositoryDLL.Entities
             {
                 entity.ToTable("Checkout");
 
-                entity.Property(e => e.Depositornumber).HasMaxLength(50);
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Quantity)
-                    .HasMaxLength(10)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Receivenember).HasMaxLength(50);
+                entity.Property(e => e.Status).HasMaxLength(10);
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Checkouts)
@@ -146,6 +141,25 @@ namespace ClassLibrary_RepositoryDLL.Entities
                     .WithMany(p => p.Checkouts)
                     .HasForeignKey(d => d.ShippingfeeId)
                     .HasConstraintName("FK_Checkout_ShippingFee");
+            });
+
+            modelBuilder.Entity<CheckoutDetail>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Checkout_Detail");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.HasOne(d => d.Book)
+                    .WithMany()
+                    .HasForeignKey(d => d.BookId)
+                    .HasConstraintName("FK_Checkout_Detail_Book");
+
+                entity.HasOne(d => d.Checkout)
+                    .WithMany()
+                    .HasForeignKey(d => d.CheckoutId)
+                    .HasConstraintName("FK_Checkout_Detail_Checkout");
             });
 
             modelBuilder.Entity<PaymentMethod>(entity =>

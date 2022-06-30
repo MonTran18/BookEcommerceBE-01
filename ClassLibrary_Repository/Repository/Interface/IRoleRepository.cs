@@ -9,7 +9,6 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IRoleRepository
     {
-        bool searchRole(Role keyword);
         List<Role> getAllRole();
         void addRole(Role newrole);
         bool updateRole(Role newrole);

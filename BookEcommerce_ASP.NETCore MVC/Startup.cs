@@ -1,20 +1,21 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ClassLibrary_RepositoryDLL.Entities;
 using ClassLibrary_RepositoryDLL.Repository;
 using ClassLibrary_RepositoryDLL.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using ClassLibrary_RepositoryDLL.Mappings;
 using ClassLibrary_RepositoryDLL.Repository.Interface;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using FluentAssertions.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace BookEcommerce_ASP.NETCore_MVC
 {
@@ -41,9 +42,11 @@ namespace BookEcommerce_ASP.NETCore_MVC
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
-            
+            services.AddTransient<ICheckoutRepository, CheckoutRepository>();
+
             //declare for Services
             services.AddMvc();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IAuthorService, AuthorService>();
@@ -56,6 +59,21 @@ namespace BookEcommerce_ASP.NETCore_MVC
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            //    {
+            //        options.RequireHttpsMetadata = false;
+            //        options.SaveToken = true;
+            //        options.TokenValidationParameters = new TokenValidationParameters()
+            //        {
+            //            ValidateIssuer = true,
+            //            ValidateAudience = true,
+            //            ValidAudience = Configuration["Jwt:Audience"],
+            //            ValidIssuer = Configuration["Jwt:Issuer"],
+            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+            //        };
+            //    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,16 +98,16 @@ namespace BookEcommerce_ASP.NETCore_MVC
 
             app.UseEndpoints(endpoints =>
             {
-                
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-               
+
                 endpoints.MapControllerRoute(
                       name: "areas",
                       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
             );
-        });
+            });
 
         }
     }

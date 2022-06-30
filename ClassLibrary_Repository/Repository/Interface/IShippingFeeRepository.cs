@@ -9,7 +9,6 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IShippingFeeRepository
     {
-        bool searchShip(ShippingFee keyword);
         List<ShippingFee> getAllShippingFee();
         void addShippingFee(ShippingFee newshippingfee);
         bool updateShippingFee(ShippingFee newshippingfee);

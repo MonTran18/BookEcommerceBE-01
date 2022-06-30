@@ -9,7 +9,7 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IPublisherRepository
     {
-        bool searchPub(Publisher keyword);
+        List<Publisher> searchPub(string keyword);
         List<Publisher> getAllPublisher();
         void addPublisher(Publisher newpub);
         bool updatePublisher(Publisher newpub);

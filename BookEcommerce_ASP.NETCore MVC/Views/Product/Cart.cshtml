@@ -52,9 +52,9 @@
                                             <td>@thanhtien</td>
                                             <td><a asp-action="RemoveCartItem" asp-route-id="@cartItem.BookId"><i class="fa fa-trash"></i></a></td>
                                            <td>
-                                                <a data-id="@cartItem.Book.Id" data-qty="@cartItem.Quantity">
+                                                <button data-id="@cartItem.Book.Id" data-qty="@cartItem.Quantity">
                                                     <i class="fa fa-check"></i>
-                                                </a>
+                                                </button>
                                   
                                             </td>
                                       
@@ -86,7 +86,7 @@
                                             <h2>Tổng Tiền: <span>@total.000đ</span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <a asp-controller="Home" asp-action="Checkout" class="btn btn-success">Thanh Toán</a>
+                                            <a asp-controller="Product" asp-action="Checkout" class="btn btn-success">Thanh Toán</a>
                                         </div>
                                   
                                     </div>
@@ -94,7 +94,6 @@
                             </div>
 
                         </div>
-
 
                     </div>
                 </div>

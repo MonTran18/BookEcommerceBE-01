@@ -9,7 +9,7 @@ namespace ClassLibrary_RepositoryDLL.Repository.Interface
 {
     public interface IReviewRepository
     {
-        bool searchReview(Review keyword);
+        List<Review> searchReview(string keyword);
         List<Review> getAllReview();
         void addReview(Review newreview);
         bool updateReview(Review newreview);

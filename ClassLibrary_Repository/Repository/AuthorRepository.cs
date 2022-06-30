@@ -58,10 +58,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             Author author = _context.Authors.Find(authorId);
             return author;
         }
-
-        public bool searchAuthor(Author keyword)
+        public List<Author> searchAuthor(string keyword)
         {
-            throw new NotImplementedException();
+            List<Author> authors = _context.Authors.Where(a => a.Authorname.Contains(keyword)).ToList();
+            return authors;
         }
 
         public bool updateAuthor(Author newauthor)

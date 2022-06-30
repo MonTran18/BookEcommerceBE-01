@@ -28,6 +28,28 @@ namespace ClassLibrary_RepositoryDLL.Repository
             }
         }
 
+        public bool checkLogin(string username, string password)
+        {
+            var inputData = from destination in _context.Accounts
+                            where destination.Username == username && destination.Password == password
+                            select destination;
+            if (inputData.Any())
+            {
+                return true;
+            }
+            return false;
+            //Or
+            //Account user = _context.Accounts.SingleOrDefault(user => user.Username.Equals(username));
+            //if (user != null)
+            //{
+            //    if(user.Password == password)
+            //    {
+            //        return true;
+            //    }
+            //}
+            //return false;
+        }
+
         public bool deleteAccount(int accountId)
         {
             Account account = _context.Accounts.Find(accountId);
@@ -59,9 +81,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return accounts;
         }
 
-        public bool searchAccount(Account keyword)
+        public List<Account> searchAccount(string keyword)
         {
-            throw new NotImplementedException();
+            List<Account> accounts = _context.Accounts.Where(a => a.Fullname == keyword).ToList();
+            return accounts;
         }
 
         public bool updateAccount(Account newaccount)

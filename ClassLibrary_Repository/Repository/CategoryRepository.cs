@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary_RepositoryDLL.Entities;
 using ClassLibrary_RepositoryDLL.Repository.Interface;
-using ClassLibrary_RepositoryDLL.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary_RepositoryDLL.Repository
 {
@@ -67,9 +65,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return category;
         }
 
-        public bool searchCate(Category keyword)
+        public List<Category> searchCate(string keyword)
         {
-            throw new NotImplementedException();
+            List<Category> categories = _context.Categories.Where(c => c.Categoryname.Contains(keyword)).ToList();
+            return categories;
         }
 
         public bool updateCategory(Category newcategory)

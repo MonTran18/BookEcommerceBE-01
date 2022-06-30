@@ -55,9 +55,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
             return publisher;
         }
 
-        public bool searchPub(Publisher keyword)
+        public List<Publisher> searchPub(string keyword)
         {
-            throw new NotImplementedException();
+            List<Publisher> publishers = _context.Publishers.Where(p => p.Publishname.Contains(keyword)).ToList();
+            return publishers;
         }
 
         public bool updatePublisher(Publisher newpub)
