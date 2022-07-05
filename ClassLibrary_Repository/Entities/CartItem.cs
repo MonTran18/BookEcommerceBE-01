@@ -17,5 +17,6 @@ namespace ClassLibrary_RepositoryDLL.Entities
 
         public virtual Book Book { get; set; }
         public virtual Cart Cart { get; set; }
+        public virtual ICollection<Checkout> CheckList { get; set; }
     }
 }

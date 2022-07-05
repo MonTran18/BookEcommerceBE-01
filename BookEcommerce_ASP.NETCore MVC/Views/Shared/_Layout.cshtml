@@ -70,8 +70,7 @@
                         </div>
 
                         <div class="navbar-nav ml-auto">
-                            <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Register">Đăng Ký</a>
-                            <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Login">Đăng Nhập</a>
+                            @await Html.PartialAsync("_HeaderPartial.cshtml")
                         </div>
                        
                     </div>

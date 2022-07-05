@@ -35,27 +35,15 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterModel model)
+        public IActionResult Register(Account account)
         {
 
             if (ModelState.IsValid)
             {
-                Account user = new Account()
-                {
-                    Fullname = model.Fullname,
-                    Username = model.Username,
-                    Phone = model.Phone,
-                    Password = model.Password,
+                account.Password = HashPassword.CreateMD5Hash(account.Password);
+                _context.Accounts.Add(account);
+                _context.SaveChanges();
 
-
-                };
-                _context.Accounts.Add(user);
-                await _context.SaveChangesAsync();
-
-            }
-            else
-            {
-                return View("RegisterSuccess");
             }
 
             return RedirectToAction("RegisterSuccess", "User");
@@ -77,7 +65,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError("Password", "Invalid login attempt.");
-                    return View("Index");
+                    return View("Login");
                 }
                 HttpContext.Session.SetString("Username", user.Username);
 
@@ -86,7 +74,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             {
                 return View("Login");
             }
-            return RedirectToAction("LoginSuccess", "User");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult RegisterSuccess()
@@ -99,11 +87,11 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             return View();
         }
 
-        //public IActionResult Logout()
-        //{
-        //    HttpContext.Session.Clear();
-        //    return View("Index");
-        //}
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View("Index");
+        }
         public void ValidationMessage(string key, string alert, string value)
         {
             try

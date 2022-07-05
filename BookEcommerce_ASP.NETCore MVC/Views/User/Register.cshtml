@@ -26,11 +26,18 @@
                                     <span asp-validation-for="Fullname" class="text-danger"></span>
                                 </div>
                                
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label asp-for="Username">Username</label>
                                     <input asp-for="Username" class="form-control" type="text" placeholder="Username">
                                     <span asp-validation-for="Username" class="text-danger"></span>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="Address">Address</label>
+                                    <input asp-for="Address" class="form-control" type="text" placeholder="Địa Chỉ">
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+
                                 <div class="col-md-6">
                                     <label asp-for="Phone">Số Điện Thoại</label>
                                     <input asp-for="Phone"class="form-control" type="text" placeholder="Số Điện Thoại">

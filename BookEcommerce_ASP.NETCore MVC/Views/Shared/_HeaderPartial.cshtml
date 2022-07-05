@@ -1,0 +1,16 @@
+﻿ 
+
+<div class="navbar-nav ml-auto">
+                           
+             @if (string.IsNullOrEmpty(ViewBag.Username))
+                    {
+                         <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Register">Đăng Ký</a>
+                         <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Login">Đăng Nhập</a>
+                    }
+                    else
+                    {
+                        <a href="#">@ViewBag.Username</a>
+                        <a onclick="DeleteSession()" href="javascript:">Log out</a>
+                    }
+
+</div>

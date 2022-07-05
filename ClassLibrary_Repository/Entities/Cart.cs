@@ -17,5 +17,6 @@ namespace ClassLibrary_RepositoryDLL.Entities
 
         public virtual Account Account { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<Checkout> CheckList { get; set; }
     }
 }

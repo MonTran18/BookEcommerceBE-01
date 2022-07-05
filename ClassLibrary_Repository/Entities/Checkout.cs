@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -9,6 +10,7 @@ namespace ClassLibrary_RepositoryDLL.Entities
     {
         public int Id { get; set; }
         public int? AccountId { get; set; }
+        [ForeignKey("Account_Id")]
         public DateTime? CreateDate { get; set; }
         public string Status { get; set; }
         public int? ShippingfeeId { get; set; }

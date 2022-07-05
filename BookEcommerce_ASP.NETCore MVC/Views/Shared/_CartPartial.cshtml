@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http
+﻿@using ClassLibrary_RepositoryDLL.Entities
+@using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
 @inject IHttpContextAccessor HttpContextAccessor
 
@@ -8,7 +9,7 @@
     string jsoncart = session.GetString (BookEcommerce_ASP.NETCore_MVC.Controllers.ProductController.KEY);
     if (jsoncart != null) {
         var cart = JsonConvert.DeserializeObject<List<CartItem>> (jsoncart);
-        <div ><a asp-action="Cart" class="btn cart"><i class="fa fa-shopping-cart"></i><span>(@cart.Count)</span></a></div>
+        <div ><a asp-controller="Product" asp-action="Cart" class="btn cart"><i class="fa fa-shopping-cart"></i><span>(@cart.Count)</span></a></div>
          
     }
 }

@@ -15,6 +15,8 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         private readonly ILogger<ProductController> _logger;
         private readonly IBookRepository _repo;
         private readonly ICheckoutRepository _checkoutRepo;
+        private readonly ICartRepository _cart;
+        private readonly IAccountRepository _acc;
 
         public ProductController(ILogger<ProductController> logger, IBookRepository repo, ICheckoutRepository checkoutRepo)
         {
@@ -97,50 +99,11 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         {
             return View(getCartItems());
         }
-        [Route("/checkout")]
-        public IActionResult CheckOut([FromForm] string email, [FromForm] string address)
-        {
-            ViewBag.Username = HttpContext.Session.GetString("username");
-            // Xử lý khi đặt hàng
-            var cart = getCartItems();
-            ViewData["email"] = email;
-            ViewData["address"] = address;
-            ViewBag.cart = cart;
-            ViewBag.size = cart.Count;
-            if (HttpContext.Session.GetInt32("id") != null)
-            {
-                ViewBag.id = HttpContext.Session.GetInt32("id");
-            }
-            else return Redirect(Url.RouteUrl(new { area = "", controller = "User", action = "Login" }));
-            //if (!string.IsNullOrEmpty(email))
-            //{
-            //    // hãy tạo cấu trúc db lưu lại đơn hàng và xóa cart khỏi session
-
-            //    ClearCart();
-            //    RedirectToAction(nameof(Index));
-            //}
-
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult checkoutConfirm(FormCollection formCollection)
-        {
-            Checkout checkout = new Checkout();
-            checkout.CreateDate = System.DateTime.UtcNow;
-            checkout.Account.Fullname = formCollection["fullname"];
-            checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
-            checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
-            //checkout.Phone = formCollection["phonenumber"];
-            checkout.Payment.Paymentname = formCollection["paymentmethod"];
-            _checkoutRepo.addCheckout(checkout);
-            return RedirectToAction("Index", "HomeController");
-        }
-
-
+        
        // SESSION
         // JSON key 
         public const string KEY = "cart";
+        public const string key = "checkout";
 
         public int? Quantity { get; private set; }
 
@@ -154,16 +117,82 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             }
             return new List<CartItem>();
         }
+
+        List<Checkout> getCheckoutlist()
+        {
+            var session = HttpContext.Session;
+            string jsonCart = session.GetString(key);
+            if (jsonCart != null)
+            {
+                return JsonConvert.DeserializeObject<List<Checkout>>(jsonCart);
+            }
+            return new List<Checkout>();
+        }
         void ClearCart()
         {
             var session = HttpContext.Session;
             session.Remove(KEY);
+        }
+
+        void ClearCheckout()
+        {
+            var session = HttpContext.Session;
+            session.Remove(key);
         }
         void SaveCart(List<CartItem> cartItems)
         {
             var session = HttpContext.Session;
             string jsonCart = JsonConvert.SerializeObject(cartItems);
             session.SetString(KEY, jsonCart);
+        }
+
+        void SaveCheckout(List<Checkout> checkout)
+        {
+            var session = HttpContext.Session;
+            string jsonCart = JsonConvert.SerializeObject(checkout);
+            session.SetString(key, jsonCart);
+        }
+
+        [Route("/checkout")]
+        public IActionResult Checkout([FromForm] string username, [FromForm] string password)
+        {
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            // Xử lý khi đặt hàng
+            var cart = getCartItems();
+            ViewData["username"] = username;
+            ViewData["password"] = password;
+            ViewBag.cart = cart;
+            ViewBag.size = cart.Count;
+            if (HttpContext.Session.GetInt32("id") != null)
+            {
+                ViewBag.id = HttpContext.Session.GetInt32("id");
+            }
+            else return Redirect(Url.RouteUrl(new { area = "", controller = "User", action = "Login" }));
+            if (!string.IsNullOrEmpty(username))
+            {
+                // hãy tạo cấu trúc db lưu lại đơn hàng và xóa cart khỏi session
+
+                ClearCart();
+                RedirectToAction(nameof(Index));
+            }
+
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Checkout(FormCollection formCollection)
+        {
+            Checkout checkout = new Checkout();
+            checkout.CreateDate = System.DateTime.UtcNow;
+            // checkout.Account.Fullname = formCollection["fullname"];
+            checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
+            checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
+            //checkout.Phone = formCollection["phonenumber"];
+            checkout.Payment.Paymentname = formCollection["paymentmethod"];
+            _checkoutRepo.addCheckout(checkout);
+            return RedirectToAction("Index", "HomeController");
         }
     }
 }

@@ -58,6 +58,7 @@ namespace BookEcommerce_ASP.NETCore_MVC
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<ICheckoutRepository, CheckoutRepository>();
+            services.AddTransient<IPaymentMethodRepository, PaymentMethodRepository> ();
 
             //declare for Services
             services.AddMvc();
@@ -65,7 +66,9 @@ namespace BookEcommerce_ASP.NETCore_MVC
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IAuthorService, AuthorService>();
-            
+            services.AddTransient<IPaymentMethodService, PaymentMethodService>();
+
+
 
 
 

@@ -1,127 +1,54 @@
-﻿@model List<ClassLibrary_RepositoryDLL.Entities.CartItem>
+﻿@model ClassLibrary_RepositoryDLL.Models.CheckoutModel
+@inject ClassLibrary_RepositoryDLL.Services.IPaymentMethodService pmservice
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
     ViewData["Tiltle"] = "Checkout";
     Layout = "/Views/Shared/_Layout.cshtml";
-}
- <div class="checkout">
+ }
+
+ <!-- Checkout Start -->
+        <div class="checkout">
             <div class="container-fluid"> 
+                  <form asp-action="Checkout" asp-controller="Product">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="checkout-inner">
                             <div class="billing-address">
-                                <h2>Địa Chỉ Thanh Toán</h2>
-                        @using (Html.BeginForm("saveOrder", "Product", FormMethod.Post))
-                        {
-                            
-                            <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Họ và Tên: </label>
-                                        <input class="form-control" type="text" placeholder="Họ và Tên" name="fullname" readonly>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label>E-mail: </label>
-                                        <input class="form-control" type="text" placeholder="E-mail" name="email">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label>Số Điện Thoại: </label>
-                                        <input class="form-control" type="text" placeholder="Số Điện Thoại" name="phone">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Địa Chỉ: </label>
-                                        <input class="form-control" type="text" placeholder="Địa Chỉ" name="address">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label>Thành Phố: </label>
-                                        <input class="form-control" type="text" placeholder="Thành Phố" name="city">
-                                    </div>
-
-                                  
-                                </div>
-                        }
-                            </div>
-
-                            @*<div class="shipping-address">
-                                <h2>Địa Chỉ Thanh Toán</h2>
+                                <h2>Thông Tin Thanh Toán</h2>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Họ và Tên</label>
-                                        <input class="form-control" type="text" placeholder="Họ và Tên">
-                                    </div>
-                                
-                                    <div class="col-md-6">
-                                        <label>E-mail</label>
-                                        <input class="form-control" type="text" placeholder="E-mail">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Số Điện Thoại</label>
-                                        <input class="form-control" type="text" placeholder="Số Điện Thoại">
-                                    </div>
                                     <div class="col-md-12">
-                                        <label>Địa Chỉ</label>
-                                        <input class="form-control" type="text" placeholder="Địa Chỉ">
+                                        <label asp-for="PaymentId">Chọn Hình Thức Thanh Toán: </label>
+                                        <input asp-for="PaymentId"class="form-control" type="number" placeholder="number">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label asp-for="Depositornumber">Số Tài Khoản Người Nhận: </label>
+                                        <input asp-for="Depositornumber"class="form-control" type="text" placeholder="Số Tài Khoản Người Nhận">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Thành Phố</label>
-                                        <input class="form-control" type="text" placeholder="Thành Phố">
+                                        <label asp-for="Receivernumber">Số Tài Khoản Người Gửi: </label>
+                                        <input asp-for="Receivernumber" class="form-control" type="text" placeholder="Số Tài Khoản Người Gửi">
                                     </div>
                                 </div>
-                            </div>*@
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="checkout-inner">
-                            <div class="checkout-summary">
-                                <h1>Tổng Giỏ Hàng</h1>
-                                <p>Tên Sản Phẩm: <span>$99</span></p>
-                                <p class="sub-total">Thành Tiền: <span>$99</span></p>
-                                <p class="ship-cost">Phí Ship<span>$1</span></p>
-                                <h2>Tổng Tiền<span>$100</span></h2>
-                            </div>
-
                             <div class="checkout-payment">
                                 <div class="payment-methods">
+
                                     <h1>Phương Thức Thanh Toán</h1>
-                                    <div class="payment-method">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-1" name="payment">
-                                            <label class="custom-control-label" for="payment-1">Paypal</label>
-                                        </div>
-                                        <div class="payment-content" id="payment-1-show">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    @foreach(var item in pmservice.getAllPaymentMethod() as List<ClassLibrary_RepositoryDLL.Entities.PaymentMethod>)
+                                        {
+                                            <div class="payment-method">
+                                                <div class="custom-control custom-radio">
+                                                    <label>@item.Id @item.Paymentname</label>
+                                                </div>                  
+                                            </div>
+                                        }
                         
-                                    <div class="payment-method">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-4" name="payment">
-                                            <label class="custom-control-label" for="payment-4">Chuyển Khoản</label>
-                                        </div>
-                                        <div class="payment-content" id="payment-4-show">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="payment-method">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-5" name="payment">
-                                            <label class="custom-control-label" for="payment-5">Thanh Toán Khi Nhận Hàng</label>
-                                        </div>
-                                        <div class="payment-content" id="payment-5-show">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                            </p>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                                 <div class="checkout-btn">
                                     <button>Đặt Hàng</button>
@@ -130,5 +57,8 @@
                         </div>
                     </div>
                 </div>
+
+                </form>
             </div>
         </div>
+        <!-- Checkout End -->

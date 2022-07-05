@@ -26,10 +26,11 @@ namespace ClassLibrary_RepositoryDLL.Mappings
             CreateMap<Account, LoginModel>().ForMember(destination => destination.Username, action => action.MapFrom(source => source.Password));
             //CreateMap<Account, Cart>();
             //CreateMap<Account, Role>();
-            //CreateMap<Account, Checkout>();
-            //CreateMap<Checkout, Account>();
-            //CreateMap<Checkout, PaymentMethod>();
+            CreateMap<PaymentMethod, CheckoutModel>().ForMember(destination => destination.PaymentId, action => action.MapFrom(source => source.Id));
+            CreateMap<Checkout, CheckoutModel>().ForMember(destination => destination.PaymentId, action => action.MapFrom(source => source.PaymentId));
+            CreateMap<Checkout, PaymentMethod>().ForMember(destination => destination.Id, action => action.MapFrom(source => source.Id));
             //CreateMap<Checkout, ShippingFee>();
+            CreateMap<CartItem, Checkout>().ForMember(destination => destination.Id, action => action.MapFrom(source => source.CartId));
         }
     }
 }
