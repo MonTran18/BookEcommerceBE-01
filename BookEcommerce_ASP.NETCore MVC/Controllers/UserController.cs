@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 {
@@ -23,10 +24,12 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
     {
 
         private readonly BookEcommerceContext _context;
-        public UserController(BookEcommerceContext context)
+        private readonly IAccountRepository _acct;
+        public UserController(BookEcommerceContext context, IAccountRepository acct)
         {
 
             _context = context;
+            _acct = acct;
         }
 
         public IActionResult Register()
@@ -43,6 +46,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
                 account.Password = HashPassword.CreateMD5Hash(account.Password);
                 _context.Accounts.Add(account);
                 _context.SaveChanges();
+                
 
             }
 
@@ -52,27 +56,28 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 
         public IActionResult Login()
         {
+            ViewBag.Username = HttpContext.Session.GetString("username");
             return View();
         }
-
         [HttpPost]
-        public async Task<ActionResult> Login(LoginModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _context.Accounts
-                 .SingleOrDefaultAsync(m => m.Username == model.Username && m.Password == model.Password);
-                if (user == null)
-                {
-                    ModelState.AddModelError("Password", "Invalid login attempt.");
-                    return View("Login");
-                }
-                HttpContext.Session.SetString("Username", user.Username);
+        [ValidateAntiForgeryToken]
+        public IActionResult Login([Bind("UserName,Password")] Account member)
 
-            }
-            else
+        {
+            var r = _context.Accounts.Where(m => (m.Username == member.Username && m.Password == HashPassword.CreateMD5Hash(member.Password))).ToList();
+            var info = _context.Accounts.Where(m => m.Username == member.Username).ToList();
+            if (r.Count == 0)
             {
+
                 return View("Login");
+            }
+            var str = JsonConvert.SerializeObject(member);
+            //HttpContext.Session.SetString("username", member.Username);
+            HttpContext.Session.SetInt32("id", info[0].Id);
+            if (r[0].Carts == null)
+            {
+                var url = Url.RouteUrl("", new { Controller = "Home", action = "Index", area = "" });
+                return Redirect(url);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -87,10 +92,11 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             return View();
         }
 
-        public IActionResult Logout()
+        [HttpPost]
+        public JsonResult LogOut()
         {
             HttpContext.Session.Clear();
-            return View("Index");
+            return Json(new { success = "True" });
         }
         public void ValidationMessage(string key, string alert, string value)
         {

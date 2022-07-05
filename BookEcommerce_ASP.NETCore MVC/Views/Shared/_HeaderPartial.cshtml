@@ -1,16 +1,21 @@
-﻿ 
+﻿@using Microsoft.AspNetCore.Http
+
+ 
 
 <div class="navbar-nav ml-auto">
                            
-             @if (string.IsNullOrEmpty(ViewBag.Username))
+            @if (Context.Session.GetString("username" )== null)
                     {
                          <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Register">Đăng Ký</a>
                          <a class="nav-item nav-right" asp-area="" asp-controller="User" asp-action="Login">Đăng Nhập</a>
+
                     }
                     else
                     {
-                        <a href="#">@ViewBag.Username</a>
-                        <a onclick="DeleteSession()" href="javascript:">Log out</a>
+                      <a class="nav-item nav-right" asp-controller="Product" asp-action="logout">@Context.Session.GetString("username")</a>
+                      <a class="nav-item nav-right" asp-controller="User" asp-action="logout">Logout</a>
                     }
 
 </div>
+
+

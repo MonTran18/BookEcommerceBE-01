@@ -97,15 +97,13 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         [Route("/cart", Name = "Cart")]
         public IActionResult Cart()
         {
+            ViewBag.Username = HttpContext.Session.GetString("username");
             return View(getCartItems());
         }
         
        // SESSION
         // JSON key 
         public const string KEY = "cart";
-        public const string key = "checkout";
-
-        public int? Quantity { get; private set; }
 
         List<CartItem> getCartItems()
         {
@@ -118,27 +116,13 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             return new List<CartItem>();
         }
 
-        List<Checkout> getCheckoutlist()
-        {
-            var session = HttpContext.Session;
-            string jsonCart = session.GetString(key);
-            if (jsonCart != null)
-            {
-                return JsonConvert.DeserializeObject<List<Checkout>>(jsonCart);
-            }
-            return new List<Checkout>();
-        }
         void ClearCart()
         {
             var session = HttpContext.Session;
             session.Remove(KEY);
         }
 
-        void ClearCheckout()
-        {
-            var session = HttpContext.Session;
-            session.Remove(key);
-        }
+    
         void SaveCart(List<CartItem> cartItems)
         {
             var session = HttpContext.Session;
@@ -146,14 +130,11 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             session.SetString(KEY, jsonCart);
         }
 
-        void SaveCheckout(List<Checkout> checkout)
-        {
-            var session = HttpContext.Session;
-            string jsonCart = JsonConvert.SerializeObject(checkout);
-            session.SetString(key, jsonCart);
-        }
-
         [Route("/checkout")]
+        public IActionResult Checkout()
+        {
+            return View();
+        }
         public IActionResult Checkout([FromForm] string username, [FromForm] string password)
         {
             ViewBag.Username = HttpContext.Session.GetString("username");
@@ -173,26 +154,26 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
                 // hãy tạo cấu trúc db lưu lại đơn hàng và xóa cart khỏi session
 
                 ClearCart();
-                RedirectToAction(nameof(Index));
+                RedirectToAction("Index", "Home");
             }
 
-            return View();
+           return View();
         }
 
 
 
-        [HttpPost]
-        public IActionResult Checkout(FormCollection formCollection)
-        {
-            Checkout checkout = new Checkout();
-            checkout.CreateDate = System.DateTime.UtcNow;
-            // checkout.Account.Fullname = formCollection["fullname"];
-            checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
-            checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
-            //checkout.Phone = formCollection["phonenumber"];
-            checkout.Payment.Paymentname = formCollection["paymentmethod"];
-            _checkoutRepo.addCheckout(checkout);
-            return RedirectToAction("Index", "HomeController");
-        }
+        //[HttpPost]
+        //public IActionResult Checkout(FormCollection formCollection)
+        //{
+        //    Checkout checkout = new Checkout();
+        //    checkout.CreateDate = System.DateTime.UtcNow;
+        //    // checkout.Account.Fullname = formCollection["fullname"];
+        //    checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
+        //    checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
+        //    //checkout.Phone = formCollection["phonenumber"];
+        //    checkout.Payment.Paymentname = formCollection["paymentmethod"];
+        //    _checkoutRepo.addCheckout(checkout);
+        //    return RedirectToAction("Index", "HomeController");
+        //}
     }
 }

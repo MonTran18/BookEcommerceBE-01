@@ -10,6 +10,8 @@ namespace ClassLibrary_RepositoryDLL.Models
     public class CheckoutModel
     {
         [Required]
+        public string Username { get; set; }
+        [Required]
         public int Depositornumber { get; set; }
         [Required]
         public int Receivernumber { get; set; }
