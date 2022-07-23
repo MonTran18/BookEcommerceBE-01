@@ -36,10 +36,7 @@ namespace BookEcommerce_ASP.NETCore_MVC
         {
             services.AddControllersWithViews();
             services.AddDbContext<BookEcommerceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GlobalConnectionString")));
-            //services.AddIdentity<ApplicationUser,Role>().AddEntityFrameworkStores<DbContext>();
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                       .AddEntityFrameworkStores<BookEcommerceContext>()
-                       .AddDefaultTokenProviders();
+          
               
          
             services.Configure<CookiePolicyOptions>(options =>

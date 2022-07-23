@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using ClassLibrary_RepositoryDLL.Models;
+using System.Linq;
 
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 {
@@ -17,12 +19,13 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         private readonly ICheckoutRepository _checkoutRepo;
         private readonly ICartRepository _cart;
         private readonly IAccountRepository _acc;
-
-        public ProductController(ILogger<ProductController> logger, IBookRepository repo, ICheckoutRepository checkoutRepo)
+        private readonly BookEcommerceContext _context;
+        public ProductController(ILogger<ProductController> logger, IBookRepository repo, ICheckoutRepository checkoutRepo, BookEcommerceContext context)
         {
             _logger = logger;
             _repo = repo;
             _checkoutRepo = checkoutRepo;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -32,9 +35,12 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 
         //CART
       //  [Route("addcart/{id}")]
-        public IActionResult AddToCart(int id)
+        public IActionResult AddToCart([FromRoute] int id)
         {
             Book book = _repo.getDetailBook(id);
+            var books = _context.Books
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
             if (book == null)
             {
                 return NotFound("Không tìm thấy sản phẩm");
@@ -131,49 +137,39 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         }
 
         [Route("/checkout")]
-        public IActionResult Checkout()
-        {
-            return View();
-        }
-        public IActionResult Checkout([FromForm] string username, [FromForm] string password)
+        //public IActionResult Checkout()
+        //{
+        //    return View();
+        //}
+        public IActionResult Checkout(LoginModel model, CheckoutModel ck)
         {
             ViewBag.Username = HttpContext.Session.GetString("username");
             // Xử lý khi đặt hàng
             var cart = getCartItems();
-            ViewData["username"] = username;
-            ViewData["password"] = password;
             ViewBag.cart = cart;
             ViewBag.size = cart.Count;
-            if (HttpContext.Session.GetInt32("id") != null)
+            if (HttpContext.Session.GetString("username") != null)
             {
-                ViewBag.id = HttpContext.Session.GetInt32("id");
+                ViewBag.Username = HttpContext.Session.GetString("username");
             }
             else return Redirect(Url.RouteUrl(new { area = "", controller = "User", action = "Login" }));
-            if (!string.IsNullOrEmpty(username))
+
+            if (!string.IsNullOrEmpty(model.Username))
             {
-                // hãy tạo cấu trúc db lưu lại đơn hàng và xóa cart khỏi session
+                Checkout checkout = new Checkout();
+                checkout.CreateDate = System.DateTime.UtcNow;
+
+                checkout.Username = ck.Username;
+                checkout.Depositornumber = ck.Depositornumber;
+                checkout.PaymentId = ck.PaymentId;
+                _checkoutRepo.addCheckout(checkout);
 
                 ClearCart();
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
-           return View();
+            return View();
         }
 
-
-
-        //[HttpPost]
-        //public IActionResult Checkout(FormCollection formCollection)
-        //{
-        //    Checkout checkout = new Checkout();
-        //    checkout.CreateDate = System.DateTime.UtcNow;
-        //    // checkout.Account.Fullname = formCollection["fullname"];
-        //    checkout.Depositornumber = Convert.ToInt32(formCollection["depositornumber"]);
-        //    checkout.Receivernumber = Convert.ToInt32(formCollection["receivernumber"]);
-        //    //checkout.Phone = formCollection["phonenumber"];
-        //    checkout.Payment.Paymentname = formCollection["paymentmethod"];
-        //    _checkoutRepo.addCheckout(checkout);
-        //    return RedirectToAction("Index", "HomeController");
-        //}
     }
 }

@@ -420,14 +420,6 @@ D:\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\refint\Bo
 D:\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.pdb
 D:\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.genruntimeconfig.cache
 D:\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\ref\BookEcommerce_ASP.NETCore MVC.dll
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.csproj.AssemblyReference.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.AssemblyInfoInputs.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.AssemblyInfo.cs
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.csproj.CoreCompileInputs.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.RazorAssemblyInfo.cache
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.RazorAssemblyInfo.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\appsettings.json
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.exe
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.deps.json
@@ -603,6 +595,14 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\b
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\ClassLibrary_RepositoryDLL.dll
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\bin\Debug\net5.0\ClassLibrary_RepositoryDLL.pdb
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.csproj.AssemblyReference.cache
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.AssemblyInfoInputs.cache
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.AssemblyInfo.cs
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.csproj.CoreCompileInputs.cache
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.RazorAssemblyInfo.cache
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.RazorAssemblyInfo.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\scopedcss\bundle\BookEcommerce_ASP.NETCore MVC.styles.css
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\staticwebassets\BookEcommerce_ASP.NETCore MVC.StaticWebAssets.Manifest.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.TagHelpers.input.cache
@@ -621,7 +621,6 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\LoginSuccess.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\RegisterSuccess.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -635,3 +634,4 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.pdb
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.genruntimeconfig.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\ref\BookEcommerce_ASP.NETCore MVC.dll
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\LoginFail.cshtml.g.cs

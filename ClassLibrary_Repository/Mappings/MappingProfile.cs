@@ -27,7 +27,7 @@ namespace ClassLibrary_RepositoryDLL.Mappings
             //CreateMap<Account, Cart>();
             //CreateMap<Account, Role>();
             CreateMap<PaymentMethod, CheckoutModel>().ForMember(destination => destination.PaymentId, action => action.MapFrom(source => source.Id));
-            CreateMap<Checkout, CheckoutModel>().ForMember(destination => destination.PaymentId, action => action.MapFrom(source => source.PaymentId));
+            CreateMap<Checkout, CheckoutModel>().ForMember(destination => destination.Username, action => action.MapFrom(source => source.Account));
             CreateMap<Checkout, PaymentMethod>().ForMember(destination => destination.Id, action => action.MapFrom(source => source.Id));
             //CreateMap<Checkout, ShippingFee>();
             CreateMap<CartItem, Checkout>().ForMember(destination => destination.Id, action => action.MapFrom(source => source.CartId));

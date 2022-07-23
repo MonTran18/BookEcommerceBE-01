@@ -20,10 +20,12 @@
                                      <div class="col-md-6">
                                         <label asp-for="Username">Username: </label>
                                         <input asp-for="Username" class="form-control" value="@ViewBag.Username">
+                                        <span asp-validation-for="Username" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6">
                                         <label asp-for="PaymentId">Chọn Hình Thức Thanh Toán: </label>
                                         <input asp-for="PaymentId"class="form-control" type="number" placeholder="number">
+                                        <span asp-validation-for="PaymentId" class="text-danger"></span>
                                     </div>
 
                                     <div class="col-md-6">
@@ -57,7 +59,7 @@
                                         }
                                 </div>
                                 <div class="checkout-btn">
-                                    <button>Đặt Hàng</button>
+                                    <button type="submit">Đặt Hàng</button>
                                 </div>
                             </div>
                         </div>

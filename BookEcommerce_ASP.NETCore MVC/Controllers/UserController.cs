@@ -34,6 +34,8 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 
         public IActionResult Register()
         {
+            ViewBag.Username = HttpContext.Session.GetString("username");
+
             return View();
         }
         [HttpPost]
@@ -46,7 +48,7 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
                 account.Password = HashPassword.CreateMD5Hash(account.Password);
                 _context.Accounts.Add(account);
                 _context.SaveChanges();
-                
+
 
             }
 
@@ -59,27 +61,25 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             ViewBag.Username = HttpContext.Session.GetString("username");
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login([Bind("UserName,Password")] Account member)
-
+        public IActionResult Login(LoginModel model)
         {
-            var r = _context.Accounts.Where(m => (m.Username == member.Username && m.Password == HashPassword.CreateMD5Hash(member.Password))).ToList();
-            var info = _context.Accounts.Where(m => m.Username == member.Username).ToList();
-            if (r.Count == 0)
+            if (ModelState.IsValid)
             {
-
-                return View("Login");
+                var User = from m in _context.Accounts select m;
+                User = User.Where(s => s.Username.Contains(model.Username));
+                if (User.Any())
+                {
+                    if (User.First().Password == HashPassword.CreateMD5Hash(model.Password))
+                    {     
+                        HttpContext.Session.SetString("username", model.Username);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            var str = JsonConvert.SerializeObject(member);
-            //HttpContext.Session.SetString("username", member.Username);
-            HttpContext.Session.SetInt32("id", info[0].Id);
-            if (r[0].Carts == null)
-            {
-                var url = Url.RouteUrl("", new { Controller = "Home", action = "Index", area = "" });
-                return Redirect(url);
-            }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LoginFail", "User");
         }
 
         public IActionResult RegisterSuccess()
@@ -87,29 +87,15 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             return View();
         }
 
-        public IActionResult LoginSuccess()
+        public IActionResult LoginFail()
         {
             return View();
         }
 
-        [HttpPost]
-        public JsonResult LogOut()
+        public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return Json(new { success = "True" });
-        }
-        public void ValidationMessage(string key, string alert, string value)
-        {
-            try
-            {
-                TempData.Remove(key);
-                TempData.Add(key, value);
-                TempData.Add("alertType", alert);
-            }
-            catch
-            {
-                Debug.WriteLine("TempDataMessage Error");
-            }
+            return RedirectToAction("Index", "Home");
         }
 
 
