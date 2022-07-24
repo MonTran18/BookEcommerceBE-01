@@ -73,11 +73,11 @@ namespace ClassLibrary_RepositoryDLL.Repository
             {
                 try
                 {
-                    checkout.Status = newcheckout.Status;
                     checkout.ShippingfeeId = newcheckout.ShippingfeeId;
                     checkout.Depositornumber = newcheckout.Depositornumber;
-                    checkout.Receivernumber = newcheckout.Receivernumber;
+                    checkout.Receivenember = newcheckout.Receivenember;
                     checkout.PaymentId = newcheckout.PaymentId;
+                    checkout.Total = newcheckout.Total;
                     _context.Checkouts.Update(newcheckout);
                     _context.SaveChanges();
                     return true;

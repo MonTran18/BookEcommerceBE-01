@@ -1,5 +1,5 @@
 ﻿@model ClassLibrary_RepositoryDLL.Models.CheckoutModel
-@inject ClassLibrary_RepositoryDLL.Services.IPaymentMethodService pmservice
+
 
 @{
     ViewData["Tiltle"] = "Checkout";
@@ -9,63 +9,75 @@
  <!-- Checkout Start -->
         <div class="checkout">
             <div class="container-fluid"> 
-                 <form asp-action="Checkout" asp-controller="Product">
                 <div class="row">
-                     
                     <div class="col-lg-8">
+                       <form asp-action="Checkout" asp-controller="Product">
                         <div class="checkout-inner">
                             <div class="billing-address">
                                 <h2>Thông Tin Thanh Toán</h2>
                                 <div class="row">
-                                     <div class="col-md-6">
-                                        <label asp-for="Username">Username: </label>
-                                        <input asp-for="Username" class="form-control" value="@ViewBag.Username">
-                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    <div class="col-md-6">
+                                        <label asp-for="Username">Họ và Tên</label>
+                                        <input asp-for="Username" class="form-control" type="text" placeholder="Họ và Tên">
                                     </div>
                                     <div class="col-md-6">
-                                        <label asp-for="PaymentId">Chọn Hình Thức Thanh Toán: </label>
-                                        <input asp-for="PaymentId"class="form-control" type="number" placeholder="number">
-                                        <span asp-validation-for="PaymentId" class="text-danger"></span>
+                                        <label>Số Điện Thoại</label>
+                                        <input class="form-control" type="text" placeholder="Số Điện Thoại">
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <label asp-for="Depositornumber">Số Tài Khoản Người Nhận: </label>
-                                        <input asp-for="Depositornumber"class="form-control" type="text" placeholder="Số Tài Khoản Người Nhận">
+                                    <div class="col-md-12">
+                                        <label>Địa Chỉ</label>
+                                        <input class="form-control" type="text" placeholder="Địa Chỉ">
                                     </div>
-                                    <div class="col-md-6">
-                                        <label asp-for="Receivernumber">Số Tài Khoản Người Gửi: </label>
-                                        <input asp-for="Receivernumber" class="form-control" type="text" placeholder="Số Tài Khoản Người Gửi">
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
-                    
-                    </div>
-                     
                     <div class="col-lg-4">
                         <div class="checkout-inner">
+                            <form asp-action="Checkout" asp-controller="Product">
                             <div class="checkout-payment">
+                                
                                 <div class="payment-methods">
-
                                     <h1>Phương Thức Thanh Toán</h1>
-                                    @foreach(var item in pmservice.getAllPaymentMethod() as List<ClassLibrary_RepositoryDLL.Entities.PaymentMethod>)
-                                        {
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <label>@item.Id @item.Paymentname</label>
-                                                </div>                  
-                                            </div>
-                                        }
+                                    <div class="payment-method">
+                                        <div class="custom-control custom-radio">
+                                            
+                                            <label asp-for="PaymentId" class="custom-control-label" for="payment-1">Tiền Mặt
+                                                <input asp-for="PaymentId" value="1" type="radio" name="PaymentId" class="custom-control-input" id="payment-1" name="payment">
+                                            </label>
+                                        </div>
+                                        <div class="payment-content" id="payment-1-show">
+                                            <p>
+                                                Thanh Toán Khi Nhận Hàng
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="payment-method">
+                                        <div class="custom-control custom-radio">
+                                            
+                                            <label asp-for="PaymentId" class="custom-control-label" for="payment-2">Chuyển Khoản
+                                                <input asp-for="PaymentId" value="2" type="radio" class="custom-control-input" id="payment-2" name="payment">
+                                            </label>
+                                        </div>
+                                        <div class="payment-content" id="payment-2-show">
+                                            <label asp-for="Receivernumber" >Số Tài Khoản Người Nhận:</label>
+                                            <input asp-for="Receivernumber" class="form-control" type="text" placeholder="Số Tài Khoản Người Nhận">
+                                            <label asp-for="Depositornumber" >Số Tài Khoản Người Gửi:</label>
+                                            <input asp-for="Depositornumber" class="form-control" type="text" placeholder="Số Tài Khoản Người Gửi">
+                                        </div>
+                                    </div>
                                 </div>
+                                 
                                 <div class="checkout-btn">
-                                    <button type="submit">Đặt Hàng</button>
+                                    <button type="submit">Thanh Toán</button>
                                 </div>
                             </div>
+                            </form>
                         </div>
+                    </div>
                 </div>
-
-              </form>
             </div>
         </div>
         <!-- Checkout End -->

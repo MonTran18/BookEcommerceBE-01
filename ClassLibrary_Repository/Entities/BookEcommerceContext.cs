@@ -131,7 +131,6 @@ namespace ClassLibrary_RepositoryDLL.Entities
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Status).HasMaxLength(10);
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Checkouts)

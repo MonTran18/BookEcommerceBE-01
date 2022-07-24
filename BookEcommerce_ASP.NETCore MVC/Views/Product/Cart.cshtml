@@ -1,5 +1,5 @@
 ﻿@model List<ClassLibrary_RepositoryDLL.Entities.CartItem>
-@*@inject ClassLibrary_RepositoryDLL.Services.ICartItemService cartService*@
+@inject ClassLibrary_RepositoryDLL.Services.ICartService cartService
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -44,9 +44,11 @@
                                             <td>
                                                 <div class="qty">
                                                     @*<button class="btn-minus"><i class="fa fa-minus"></i></button> *@
+                                                    
                                                     @Html.Hidden("BookId",@cartItem.Book.Id);
                                                     @Html.TextBox("Quantity",@cartItem.Quantity);
                                                     @*<button class="btn-plus"><i class="fa fa-plus"></i></button>*@
+                                                    
                                                 </div>
                                             </td>
                                             <td>@thanhtien</td>
@@ -78,23 +80,22 @@
                                 
                                 <div class="col-md-12">
                                     <div class="cart-summary">
-                                   
+                                        
                                         <div class="cart-content">
                                             <h1>Tổng Thanh Toán</h1>
                                             <p>Thành Tiền: <span>@total.000đ</span></p>
                                             <p>Giá Ship: <span>$1</span></p>
-                                            <h2>Tổng Tiền: <span>@total.000đ</span></h2>
+                                            <h2>Tổng Tiền: <span >@total.000đ</span></h2>
                                         </div>
                                         <div class="cart-btn">
                                             <a asp-controller="Product" asp-action="Checkout" class="btn btn-success">Thanh Toán</a>
                                         </div>
-                                  
+                                        
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-
                     </div>
                 </div>
 

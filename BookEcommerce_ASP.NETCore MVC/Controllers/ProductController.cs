@@ -152,11 +152,13 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
         }
 
         [Route("/checkout")]
-        //public IActionResult Checkout()
-        //{
-        //    return View();
-        //}
-        public IActionResult Checkout(LoginModel model, CheckoutModel ck)
+        public IActionResult Checkout()
+        {
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            return View();
+        }
+
+        public IActionResult Checkout(Checkout ck)
         {
             ViewBag.Username = HttpContext.Session.GetString("username");
             // Xử lý khi đặt hàng
@@ -169,20 +171,16 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             }
             else return Redirect(Url.RouteUrl(new { area = "", controller = "User", action = "Login" }));
 
-            if (!string.IsNullOrEmpty(model.Username))
+            if (ModelState.IsValid)
             {
-                Checkout checkout = new Checkout();
-                checkout.CreateDate = System.DateTime.UtcNow;
-
-                checkout.Username = ck.Username;
-                checkout.Depositornumber = ck.Depositornumber;
-                checkout.PaymentId = ck.PaymentId;
-                _checkoutRepo.addCheckout(checkout);
+                ck.Username = HttpContext.Session.GetString("username");
+                _context.Checkouts.Add(ck);
+                _context.SaveChanges();
+               
 
                 ClearCart();
                 return RedirectToAction("Index", "Home");
             }
-
             return View();
         }
 

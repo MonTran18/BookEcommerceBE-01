@@ -17,6 +17,8 @@ namespace ClassLibrary_RepositoryDLL.Models
         public int Receivernumber { get; set; }
         [Required]
         public int PaymentId { get; set; }
+        [Required]
+        public float Total { get; set; }
 
 
 

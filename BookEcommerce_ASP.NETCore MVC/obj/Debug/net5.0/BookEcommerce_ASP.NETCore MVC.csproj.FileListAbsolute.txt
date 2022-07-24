@@ -615,12 +615,14 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Home\ProductDetail.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\Cart.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\Checkout.cshtml.g.cs
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\searchBook.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_CartPartial.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_HeaderPartial.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\LoginFail.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\RegisterSuccess.cshtml.g.cs
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -634,5 +636,3 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.pdb
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.genruntimeconfig.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\ref\BookEcommerce_ASP.NETCore MVC.dll
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\LoginFail.cshtml.g.cs
-C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\searchBook.cshtml.g.cs

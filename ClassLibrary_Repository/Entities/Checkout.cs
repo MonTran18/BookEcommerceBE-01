@@ -13,11 +13,11 @@ namespace ClassLibrary_RepositoryDLL.Entities
         public string Username { get; set; }
         [ForeignKey("Account_Id")]
         public DateTime? CreateDate { get; set; }
-        public string Status { get; set; }
         public int? ShippingfeeId { get; set; }
         public int Depositornumber { get; set; }
-        public int? Receivernumber { get; set; }
+        public int? Receivenember { get; set; }
         public int? PaymentId { get; set; }
+        public float? Total { get; set; } 
 
         public virtual Account Account { get; set; }
         public virtual PaymentMethod Payment { get; set; }
