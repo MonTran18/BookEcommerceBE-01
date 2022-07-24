@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
-                        NGUYEN.TDT4029@sinhvien.hoasen.edu.vn
+                        DACNA - 22
                     </div>
                     <div class="col-sm-6">
                         <i class="fa fa-phone-alt"></i>
@@ -91,8 +91,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Tìm Kiếm">
-                            <button><i class="fa fa-search"></i></button>
+                            <form asp-action="searchBook" asp-controller="Product" method="get">
+                                    <input type="text" name="keyword" placeholder="Tìm Kiếm">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -111,7 +113,7 @@
         </main>
     </div>
     <!-- Newsletter Start -->
-    <div class="newsletter">
+   @* <div class="newsletter">
         <div class="container-fluid">
             <div class="row">
                     <div class="col-md-6">
@@ -126,9 +128,9 @@
                     </div>
             </div>
         </div>
-    </div>
+    </div>*@
   <!-- Footer Start -->
-        <div class="footer">
+       @* <div class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -197,7 +199,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <!-- Footer End -->
         <!-- Footer Bottom Start -->
         <div class="footer-bottom">

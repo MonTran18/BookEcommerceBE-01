@@ -1,7 +1,7 @@
-﻿@inject ClassLibrary_RepositoryDLL.Services.IProductService ptservice 
+﻿ @model List<ClassLibrary_RepositoryDLL.Entities.Book>
+ @inject ClassLibrary_RepositoryDLL.Services.IProductService ptservice 
 @inject ClassLibrary_RepositoryDLL.Services.IMenuService mnservice
 @inject ClassLibrary_RepositoryDLL.Services.IAuthorService auservice
-@model ClassLibrary_RepositoryDLL.Entities.CartItem
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -13,53 +13,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="product-view-top">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-search">
-                                                <input type="email" value="Tìm Kiếm">
-                                                <button><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="product-short">
-                                                <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Sắp Xếp Theo</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">Mới Nhất</a>
-                                                        <a href="#" class="dropdown-item">Phổ Biến</a>
-                                                        <a href="#" class="dropdown-item">Bán Chạy</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="product-price-range">
-                                                <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Giá Từ</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">$0 to $50</a>
-                                                        <a href="#" class="dropdown-item">$51 to $100</a>
-                                                        <a href="#" class="dropdown-item">$101 to $150</a>
-                                                        <a href="#" class="dropdown-item">$151 to $200</a>
-                                                        <a href="#" class="dropdown-item">$201 to $250</a>
-                                                        <a href="#" class="dropdown-item">$251 to $300</a>
-                                                        <a href="#" class="dropdown-item">$301 to $350</a>
-                                                        <a href="#" class="dropdown-item">$351 to $400</a>
-                                                        <a href="#" class="dropdown-item">$401 to $450</a>
-                                                        <a href="#" class="dropdown-item">$451 to $500</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h2>Kết Quả Tìm Kiếm</h2>
                                 </div>
                             </div>
-                     @foreach(var item in ptservice.getAllBook() as List<ClassLibrary_RepositoryDLL.Models.ProductModel>)       
+                     @foreach(var item in Model)       
                          {   
                          <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
-                                        <a href="#">@item.Name</a>
+                                        <a href="#">@item.Bookname</a>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>

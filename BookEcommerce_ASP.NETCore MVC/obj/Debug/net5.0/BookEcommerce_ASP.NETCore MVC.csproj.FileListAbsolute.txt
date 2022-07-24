@@ -635,3 +635,4 @@ C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\o
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\BookEcommerce_ASP.NETCore MVC.genruntimeconfig.cache
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\ref\BookEcommerce_ASP.NETCore MVC.dll
 C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\User\LoginFail.cshtml.g.cs
+C:\Users\tranm\source\repos\BookEcommerceBE-be01\BookEcommerce_ASP.NETCore MVC\obj\Debug\net5.0\Razor\Views\Product\searchBook.cshtml.g.cs

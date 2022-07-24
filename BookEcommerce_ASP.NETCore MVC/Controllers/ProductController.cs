@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using ClassLibrary_RepositoryDLL.Models;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookEcommerce_ASP.NETCore_MVC.Controllers
 {
@@ -26,6 +28,19 @@ namespace BookEcommerce_ASP.NETCore_MVC.Controllers
             _repo = repo;
             _checkoutRepo = checkoutRepo;
             _context = context;
+        }
+
+        public async Task<IActionResult> searchBook(string keyword)
+        {
+            var books = from m in _context.Books
+                         select m;
+
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                books = books.Where(s => s.Bookname.Contains(keyword));
+            }
+
+            return View(await books.ToListAsync());
         }
 
         public IActionResult Index()
